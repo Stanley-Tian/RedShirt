@@ -16,6 +16,7 @@
 		1B3816161DA0FA8C004D706C /* EmployeeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816151DA0FA8C004D706C /* EmployeeCollectionViewCell.swift */; };
 		1B3816181DA0FDBD004D706C /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816171DA0FDBD004D706C /* Employee.swift */; };
 		1B38161A1DA11471004D706C /* AddEmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816191DA11471004D706C /* AddEmployeeTableViewController.swift */; };
+		1B38161C1DA13762004D706C /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B38161B1DA13762004D706C /* Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1B3816151DA0FA8C004D706C /* EmployeeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1B3816171DA0FDBD004D706C /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		1B3816191DA11471004D706C /* AddEmployeeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeTableViewController.swift; sourceTree = "<group>"; };
+		1B38161B1DA13762004D706C /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				1B3816151DA0FA8C004D706C /* EmployeeCollectionViewCell.swift */,
 				1B3816171DA0FDBD004D706C /* Employee.swift */,
 				1B3816191DA11471004D706C /* AddEmployeeTableViewController.swift */,
+				1B38161B1DA13762004D706C /* Tools.swift */,
 			);
 			path = RedShirt;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				1B3815FF1DA0F94E004D706C /* AppDelegate.swift in Sources */,
 				1B3816071DA0F94E004D706C /* RedShirt.xcdatamodeld in Sources */,
 				1B38161A1DA11471004D706C /* AddEmployeeTableViewController.swift in Sources */,
+				1B38161C1DA13762004D706C /* Tools.swift in Sources */,
 				1B3816181DA0FDBD004D706C /* Employee.swift in Sources */,
 				1B3816141DA0F9E9004D706C /* EmployeeCollectionViewController.swift in Sources */,
 			);

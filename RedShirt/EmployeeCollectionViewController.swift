@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
@@ -28,7 +29,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
     Employee(name: "王丕申", portrait: "6"),
     Employee(name: "柯文渡", portrait: "7"),
     ]
-    
+    @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){  }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,7 +78,6 @@ class EmployeeCollectionViewController: UICollectionViewController {
     
         return cell
     }
-    @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){  }
 
     // MARK: UICollectionViewDelegate
 
