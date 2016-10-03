@@ -8,27 +8,14 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 class AddEmployeeTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var briefTextView: UITextView!
-    
-    
-    
-    
-    
-    @IBAction func save(_ sender: UIBarButtonItem) {
-        guard let portrait = portraitImageView.image else{
-            print("portrait needed")
-            return
-        }
-        let name = nameTextField.text
-        let brief = briefTextView.text
-        
-        storeAnEmployee(WithName: name, AndPortrait: portrait, AndBrief: brief)
 
-    }
+    var employee: EmployeeModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +24,10 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        for _ in 1...10{
+            print("************************")
+        }
+        print( Realm.Configuration.defaultConfiguration.fileURL ?? "can't find the realm url")
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,7 +50,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         default:
             break
         }
-         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         portraitImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage //downcasting到UIImage类型
@@ -68,6 +59,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         Tools.setSameConstraintToSuperViewForAllSides(itemView: portraitImageView,constant: 10)
         dismiss(animated: true, completion: nil)                      //隐藏照片拾取界面
     }
+    /*
     func storeAnEmployee(WithName name:String?, AndPortrait portrait:UIImage, AndBrief brief:String?){
         let context = Tools.getContext()
         // 定义一个entity，这个entity一定要在xcdatamodeld中做好定义
@@ -87,7 +79,28 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             print(error)
         }
     }
-    
+    */
+    // try to save with realm
+    func addAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndBrief brief:String?){
+        let realm = try! Realm()
+        try! realm.write {
+            let newEmployee = EmployeeModel()
+            
+            newEmployee.name = name!
+            newEmployee.brief = brief!
+            newEmployee.rating = 0
+            
+            realm.add(newEmployee)
+            self.employee = newEmployee
+        }
+    }
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let portrait = portraitImageView.image
+        let name = nameTextField.text
+        let brief = briefTextView.text
+        addAnEmployee(WithName: name, AndPortrait: portrait, AndBrief: brief)
+        return true
+    }
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

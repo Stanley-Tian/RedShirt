@@ -17,9 +17,11 @@
 		1B3816181DA0FDBD004D706C /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816171DA0FDBD004D706C /* Employee.swift */; };
 		1B38161A1DA11471004D706C /* AddEmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816191DA11471004D706C /* AddEmployeeTableViewController.swift */; };
 		1B38161C1DA13762004D706C /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B38161B1DA13762004D706C /* Tools.swift */; };
+		3AF8554518C88EC05A51DA19 /* Pods_RedShirt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA8AC90C39D37D55CF4D2FE /* Pods_RedShirt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CEDCF882278467942B2932D /* Pods-RedShirt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedShirt.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedShirt/Pods-RedShirt.release.xcconfig"; sourceTree = "<group>"; };
 		1B3815FB1DA0F94E004D706C /* RedShirt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedShirt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3815FE1DA0F94E004D706C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B3816031DA0F94E004D706C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,6 +34,8 @@
 		1B3816171DA0FDBD004D706C /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		1B3816191DA11471004D706C /* AddEmployeeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeTableViewController.swift; sourceTree = "<group>"; };
 		1B38161B1DA13762004D706C /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		2FF20F43B12994C7F4326377 /* Pods-RedShirt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedShirt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedShirt/Pods-RedShirt.debug.xcconfig"; sourceTree = "<group>"; };
+		FDA8AC90C39D37D55CF4D2FE /* Pods_RedShirt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedShirt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF8554518C88EC05A51DA19 /* Pods_RedShirt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +55,8 @@
 			children = (
 				1B3815FD1DA0F94E004D706C /* RedShirt */,
 				1B3815FC1DA0F94E004D706C /* Products */,
+				EF8A7B94058DEA8379D08552 /* Pods */,
+				3E2F9F4DEC5EF39017A90482 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +86,23 @@
 			path = RedShirt;
 			sourceTree = "<group>";
 		};
+		3E2F9F4DEC5EF39017A90482 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDA8AC90C39D37D55CF4D2FE /* Pods_RedShirt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF8A7B94058DEA8379D08552 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2FF20F43B12994C7F4326377 /* Pods-RedShirt.debug.xcconfig */,
+				0CEDCF882278467942B2932D /* Pods-RedShirt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B3816101DA0F94E004D706C /* Build configuration list for PBXNativeTarget "RedShirt" */;
 			buildPhases = (
+				835C24833AB324DCB2B7948B /* [CP] Check Pods Manifest.lock */,
 				1B3815F71DA0F94D004D706C /* Sources */,
 				1B3815F81DA0F94D004D706C /* Frameworks */,
 				1B3815F91DA0F94D004D706C /* Resources */,
+				447E11C9E05D78759D3312EB /* [CP] Embed Pods Frameworks */,
+				1408CB0EA97BC0A98F38694A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +173,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1408CB0EA97BC0A98F38694A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedShirt/Pods-RedShirt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		447E11C9E05D78759D3312EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedShirt/Pods-RedShirt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		835C24833AB324DCB2B7948B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B3815F71DA0F94D004D706C /* Sources */ = {
@@ -279,10 +354,12 @@
 		};
 		1B3816111DA0F94E004D706C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FF20F43B12994C7F4326377 /* Pods-RedShirt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TET7T7X2S;
 				INFOPLIST_FILE = RedShirt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tmtvisioin.RedShirt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,10 +369,12 @@
 		};
 		1B3816121DA0F94E004D706C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CEDCF882278467942B2932D /* Pods-RedShirt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5TET7T7X2S;
 				INFOPLIST_FILE = RedShirt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tmtvisioin.RedShirt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +401,7 @@
 				1B3816121DA0F94E004D706C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

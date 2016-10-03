@@ -12,10 +12,10 @@ import CoreData
 
 //工具类
 class Tools{
-    class func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
-    }
+//    class func getContext () -> NSManagedObjectContext {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        return appDelegate.persistentContainer.viewContext
+//    }
     // 设置UIView的四周Constraint至同一值
     class func setSameConstraintToSuperViewForAllSides(itemView:UIView, constant:Int = 0, multiplier:Int = 1)
     {

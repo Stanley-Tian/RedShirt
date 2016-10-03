@@ -7,6 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
+
+class EmployeeModel:Object{
+    dynamic var name:String = ""
+    dynamic var brief:String = ""
+    dynamic var rating:Int = 0
+    dynamic var portrait:NSData = NSData()
+    
+}
+
 
 class Employee{
     var name:String = ""

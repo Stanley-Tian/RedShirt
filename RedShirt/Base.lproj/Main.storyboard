@@ -13,7 +13,7 @@
             <objects>
                 <collectionViewController id="YQf-Wl-4Iq" customClass="EmployeeCollectionViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzG-R8-qI9">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oHf-1a-pwU">
@@ -77,17 +77,17 @@
             <objects>
                 <tableViewController id="say-2C-k7D" customClass="AddEmployeeTableViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XHN-ce-etc">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="Pt8-pe-2i9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="31g-Jp-WaD">
-                                        <rect key="frame" x="0.0" y="64" width="768" height="200"/>
+                                        <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31g-Jp-WaD" id="hAz-7I-Sh1">
-                                            <frame key="frameInset" width="768" height="199"/>
+                                            <frame key="frameInset" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="9cS-EC-Mrt"/>
@@ -99,10 +99,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="7Oh-Mn-tWT">
-                                        <rect key="frame" x="0.0" y="264" width="768" height="97"/>
+                                        <rect key="frame" x="0.0" y="264" width="375" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Oh-Mn-tWT" id="Zk1-nJ-tCQ">
-                                            <frame key="frameInset" width="768" height="96"/>
+                                            <frame key="frameInset" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ju8-yr-kkL">
@@ -129,10 +129,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="255" id="uBD-gR-gfz">
-                                        <rect key="frame" x="0.0" y="361" width="768" height="255"/>
+                                        <rect key="frame" x="0.0" y="361" width="375" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBD-gR-gfz" id="Mzb-vf-Bn7">
-                                            <frame key="frameInset" width="768" height="254"/>
+                                            <frame key="frameInset" width="375" height="254"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="y0p-W8-k5E">
@@ -175,6 +175,7 @@
                         <barButtonItem key="rightBarButtonItem" title="保存" style="plain" id="Ht6-bc-jFn">
                             <connections>
                                 <action selector="save:" destination="say-2C-k7D" id="vdi-u0-Dah"/>
+                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToSaveWithSegue:" id="F7v-s7-Zcl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

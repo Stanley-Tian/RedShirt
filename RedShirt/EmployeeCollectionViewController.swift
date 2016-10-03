@@ -30,6 +30,11 @@ class EmployeeCollectionViewController: UICollectionViewController {
     Employee(name: "柯文渡", portrait: "7"),
     ]
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){  }
+    @IBAction func unwindToSave(segue:UIStoryboardSegue){
+        let addEmployeeController = segue.source as! AddEmployeeTableViewController
+        let e = addEmployeeController.employee
+        print(e)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
