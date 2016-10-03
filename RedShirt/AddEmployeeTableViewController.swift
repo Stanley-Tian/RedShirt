@@ -53,33 +53,12 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        portraitImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage //downcasting到UIImage类型
+        portraitImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage //downcasting到UIImage类型
         portraitImageView.contentMode = .scaleAspectFit                //设置填充样式
         portraitImageView.clipsToBounds = false                               //设置圆角剪裁
         Tools.setSameConstraintToSuperViewForAllSides(itemView: portraitImageView,constant: 10)
         dismiss(animated: true, completion: nil)                      //隐藏照片拾取界面
     }
-    /*
-    func storeAnEmployee(WithName name:String?, AndPortrait portrait:UIImage, AndBrief brief:String?){
-        let context = Tools.getContext()
-        // 定义一个entity，这个entity一定要在xcdatamodeld中做好定义
-        let entity = NSEntityDescription.entity(forEntityName: "Employee", in: context)
-        let tempEmployee = NSManagedObject(entity: entity!, insertInto: context)
-        
-        tempEmployee.setValue(name, forKey: "name")
-        // TODO:这里有Bug，entity不认这个格式，convenience还是不太给力啊
-        tempEmployee.setValue(UIImagePNGRepresentation(portrait)!, forKey: "portrait")
-        tempEmployee.setValue(brief, forKey: "brief")
-        tempEmployee.setValue(0, forKey: "rating")
-        
-        do {
-            try context.save()
-            print("a new employee saved")
-        }catch{
-            print(error)
-        }
-    }
-    */
     // try to save with realm
     func addAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndBrief brief:String?){
         let realm = try! Realm()
@@ -89,7 +68,15 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             newEmployee.name = name!
             newEmployee.brief = brief!
             newEmployee.rating = 5
-            newEmployee.portrait = UIImagePNGRepresentation(portrait!)! as NSData
+            
+            let targetSmallPortraitWidth = 128
+            let scale = Double(targetSmallPortraitWidth) / Double(portrait!.size.width)
+            let smallPortrait = UIImage(data: UIImagePNGRepresentation(portrait!)!  as Data, scale: CGFloat(scale))
+            
+            
+            //newEmployee.portrait = UIImagePNGRepresentation(portrait!)! as NSData
+            newEmployee.portrait = UIImagePNGRepresentation(smallPortrait!)! as NSData
+
             
             realm.add(newEmployee)
             self.employee = newEmployee

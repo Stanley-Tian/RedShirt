@@ -7,40 +7,27 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
 class EmployeeCollectionViewController: UICollectionViewController {
-    
-    let employees = [
-    Employee(name: "李桂花", portrait: "1"),
-    Employee(name: "张铁柱", portrait: "2"),
-    Employee(name: "齐德彪", portrait: "3"),
-    Employee(name: "李德生", portrait: "4"),
-    Employee(name: "孙忠家", portrait: "5"),
-    Employee(name: "王丕申", portrait: "6"),
-    Employee(name: "柯文渡", portrait: "7"),
-    Employee(name: "李桂花", portrait: "1"),
-    Employee(name: "张铁柱", portrait: "2"),
-    Employee(name: "齐德彪", portrait: "3"),
-    Employee(name: "李德生", portrait: "4"),
-    Employee(name: "孙忠家", portrait: "5"),
-    Employee(name: "王丕申", portrait: "6"),
-    Employee(name: "柯文渡", portrait: "7"),
-    ]
+
+    var employees =  try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){  }
     @IBAction func unwindToSave(segue:UIStoryboardSegue){
         let addEmployeeController = segue.source as! AddEmployeeTableViewController
         let e = addEmployeeController.employee
         print(e)
+          employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
+        collectionView!.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         
         // 设置item之间和line之间的间距
@@ -86,8 +73,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmployeeCollectionViewCell
         cell.nameLabel.text = employees[indexPath.row].name
-        cell.portraitImageView.image = UIImage(named: employees[indexPath.row].portrait)
-        // Configure the cell
+        cell.portraitImageView.image = UIImage(data: employees[indexPath.row].portrait as Data)
 
         return cell
     }

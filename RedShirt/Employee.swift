@@ -16,16 +16,3 @@ class EmployeeModel:Object{
     dynamic var portrait:NSData = NSData()
     
 }
-
-
-class Employee{
-    var name:String = ""
-    var portrait:String = ""
-    
-    init(name:String,portrait:String)
-    {
-        self.name = name
-        self.portrait = portrait
-
-    }
-}
