@@ -88,7 +88,8 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             
             newEmployee.name = name!
             newEmployee.brief = brief!
-            newEmployee.rating = 0
+            newEmployee.rating = 5
+            newEmployee.portrait = UIImagePNGRepresentation(portrait!)! as NSData
             
             realm.add(newEmployee)
             self.employee = newEmployee

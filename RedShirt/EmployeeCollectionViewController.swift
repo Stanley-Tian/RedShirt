@@ -41,16 +41,24 @@ class EmployeeCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        // 设置item之间和line之间的间距
+        let spacing = CGFloat(20)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing/2
+        
+        let columnNum = 3
+        // 设置每一个item的宽度
+        let itemWidth = (Int(collectionView!.bounds.width) - (columnNum + 1)*Int(spacing))/columnNum
+        layout.itemSize = CGSize(width: itemWidth, height: Int(Double(itemWidth)*1.4))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
@@ -80,7 +88,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
         cell.nameLabel.text = employees[indexPath.row].name
         cell.portraitImageView.image = UIImage(named: employees[indexPath.row].portrait)
         // Configure the cell
-    
+
         return cell
     }
 
