@@ -39,14 +39,37 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         switch indexPath.row {
         case 0:
             
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){ //先判断权限是否够用
-                let imagePicker = UIImagePickerController() // 生成一个新的UIImagePickerController
-                imagePicker.delegate = self                           // 设置代理
-                imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
-                imagePicker.sourceType = .photoLibrary       //设置image的类型。若要调用相机则为.camera
-                
-                self.present(imagePicker, animated: true, completion: nil) // 调用
-            }
+            let optionMenu = UIAlertController(title: nil, message: "请设置头像", preferredStyle: .actionSheet)
+            let takePictureButton = UIAlertAction(title: "打开相机", style: .default, handler: {(action:UIAlertAction!) -> Void in
+                if UIImagePickerController.isSourceTypeAvailable(.camera){ //先判断权限是否够用
+                    let imagePicker = UIImagePickerController() // 生成一个新的UIImagePickerController
+                    imagePicker.delegate = self                           // 设置代理
+                    imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
+                    imagePicker.sourceType = .camera       //设置image的类型。若要调用相机则为.camera
+                    
+                    self.present(imagePicker, animated: true, completion: nil) // 调用
+                }
+            })
+            let getPictureFromLibraryButton = UIAlertAction(title: "打开图库", style: .default, handler: {
+                (action:UIAlertAction!) -> Void in
+                if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){ //先判断权限是否够用
+                    let imagePicker = UIImagePickerController() // 生成一个新的UIImagePickerController
+                    imagePicker.delegate = self                           // 设置代理
+                    imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
+                    imagePicker.sourceType = .photoLibrary       //设置image的类型。若要调用相机则为.camera
+                    
+                    self.present(imagePicker, animated: true, completion: nil) // 调用
+                }
+            })
+            let cancelButton = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            
+            optionMenu.addAction(takePictureButton)
+            optionMenu.addAction(getPictureFromLibraryButton)
+            optionMenu.addAction(cancelButton)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+            
+
         default:
             break
         }
@@ -82,12 +105,38 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             self.employee = newEmployee
         }
     }
+    func performValidation() -> Bool{
+        let a = nameTextField.text
+        _ = a
+        if nameTextField.text! == "" {
+            return false
+        }else{
+            return true
+        }
+    }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let portrait = portraitImageView.image
-        let name = nameTextField.text
-        let brief = briefTextView.text
-        addAnEmployee(WithName: name, AndPortrait: portrait, AndBrief: brief)
-        return true
+        let btn = sender as! UIBarButtonItem
+        
+        if btn.tag == 10 {
+            //do cancel
+            return true
+        }else if btn.tag == 11{
+            if performValidation(){
+                let portrait = portraitImageView.image
+                let name = nameTextField.text
+                let brief = briefTextView.text
+                addAnEmployee(WithName: name, AndPortrait: portrait, AndBrief: brief)
+                
+                return true}
+            else{
+                return false
+            }
+        }else{
+            return true
+        }
+        
+        
+
     }
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -169,12 +169,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="增加新员工" id="8Km-au-5yw">
-                        <barButtonItem key="leftBarButtonItem" title="取消" style="plain" id="gku-he-G7p">
+                        <barButtonItem key="leftBarButtonItem" tag="10" title="取消" style="plain" id="gku-he-G7p">
                             <connections>
-                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="M6P-AX-ym2"/>
+                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToCancelWithSegue:" id="Zi2-dc-ylG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" style="plain" id="Ht6-bc-jFn">
+                        <barButtonItem key="rightBarButtonItem" tag="11" title="保存" style="plain" id="Ht6-bc-jFn">
                             <connections>
                                 <action selector="save:" destination="say-2C-k7D" id="vdi-u0-Dah"/>
                                 <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToSaveWithSegue:" id="F7v-s7-Zcl"/>
