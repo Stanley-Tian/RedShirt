@@ -11,7 +11,6 @@
 		1B17C1C91DA34DBF00FF83D0 /* EditEmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17C1C81DA34DBF00FF83D0 /* EditEmployeeTableViewCell.swift */; };
 		1B3815FF1DA0F94E004D706C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3815FE1DA0F94E004D706C /* AppDelegate.swift */; };
 		1B3816041DA0F94E004D706C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B3816021DA0F94E004D706C /* Main.storyboard */; };
-		1B3816071DA0F94E004D706C /* RedShirt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816051DA0F94E004D706C /* RedShirt.xcdatamodeld */; };
 		1B3816091DA0F94E004D706C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B3816081DA0F94E004D706C /* Assets.xcassets */; };
 		1B38160C1DA0F94E004D706C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B38160A1DA0F94E004D706C /* LaunchScreen.storyboard */; };
 		1B3816141DA0F9E9004D706C /* EmployeeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3816131DA0F9E9004D706C /* EmployeeCollectionViewController.swift */; };
@@ -30,7 +29,6 @@
 		1B3815FB1DA0F94E004D706C /* RedShirt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedShirt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3815FE1DA0F94E004D706C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B3816031DA0F94E004D706C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1B3816061DA0F94E004D706C /* RedShirt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RedShirt.xcdatamodel; sourceTree = "<group>"; };
 		1B3816081DA0F94E004D706C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B38160B1DA0F94E004D706C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B38160D1DA0F94E004D706C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				1B3816081DA0F94E004D706C /* Assets.xcassets */,
 				1B38160A1DA0F94E004D706C /* LaunchScreen.storyboard */,
 				1B38160D1DA0F94E004D706C /* Info.plist */,
-				1B3816051DA0F94E004D706C /* RedShirt.xcdatamodeld */,
 				1B3816131DA0F9E9004D706C /* EmployeeCollectionViewController.swift */,
 				1B3816151DA0FA8C004D706C /* EmployeeCollectionViewCell.swift */,
 				1B3816171DA0FDBD004D706C /* Employee.swift */,
@@ -238,7 +235,6 @@
 			files = (
 				1B3816161DA0FA8C004D706C /* EmployeeCollectionViewCell.swift in Sources */,
 				1B3815FF1DA0F94E004D706C /* AppDelegate.swift in Sources */,
-				1B3816071DA0F94E004D706C /* RedShirt.xcdatamodeld in Sources */,
 				1B38161A1DA11471004D706C /* AddEmployeeTableViewController.swift in Sources */,
 				1B38161C1DA13762004D706C /* Tools.swift in Sources */,
 				1B17C1C71DA34A9600FF83D0 /* EditEmployeeTableViewController.swift in Sources */,
@@ -416,19 +412,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1B3816051DA0F94E004D706C /* RedShirt.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1B3816061DA0F94E004D706C /* RedShirt.xcdatamodel */,
-			);
-			currentVersion = 1B3816061DA0F94E004D706C /* RedShirt.xcdatamodel */;
-			path = RedShirt.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1B3815F31DA0F94D004D706C /* Project object */;
 }

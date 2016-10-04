@@ -99,20 +99,14 @@ class EmployeeCollectionViewController: UICollectionViewController {
      }
      */
 }
-
+/*
 extension EmployeeCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        //self.selectedEmployee = employees[indexPath.row]
-        
-//        let destinationController = EmployeeDetailViewController()
-//        destinationController.employee = employees[indexPath.row]
-//        
-//        destinationController.performSegue(withIdentifier: "DetailSegue", sender: self)
     }
 }
+ */
 
-     // MARK: - Navigation
-
+// MARK: - Navigation
 extension EmployeeCollectionViewController{
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue"{

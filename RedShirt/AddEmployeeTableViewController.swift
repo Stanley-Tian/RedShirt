@@ -47,7 +47,8 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
                     imagePicker.delegate = self                           // 设置代理
                     imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
                     imagePicker.sourceType = .camera       //设置image的类型。若要调用相机则为.camera
-                    
+                    //imagePicker.popoverPresentationController?.sourceView = self.view
+                    //imagePicker.popoverPresentationController?.sourceRect = self.view.bounds
                     self.present(imagePicker, animated: true, completion: nil) // 调用
                 }
             })
@@ -58,6 +59,9 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
                     imagePicker.delegate = self                           // 设置代理
                     imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
                     imagePicker.sourceType = .photoLibrary       //设置image的类型。若要调用相机则为.camera
+                    // to support iPad
+                    //imagePicker.popoverPresentationController?.sourceView = self.view
+                    //imagePicker.popoverPresentationController?.sourceRect = self.view.bounds
                     
                     self.present(imagePicker, animated: true, completion: nil) // 调用
                 }
@@ -67,6 +71,11 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             optionMenu.addAction(takePictureButton)
             optionMenu.addAction(getPictureFromLibraryButton)
             optionMenu.addAction(cancelButton)
+            
+            // support iPad
+            optionMenu.popoverPresentationController?.sourceView = self.view
+            optionMenu.popoverPresentationController?.sourceRect = (tableView.cellForRow(at: indexPath)?.frame)!
+
             
             self.present(optionMenu, animated: true, completion: nil)
             
@@ -105,8 +114,8 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         }
     }
     func performValidation() -> Bool{
-        let a = nameTextField.text
-        _ = a
+        //let a = nameTextField.text
+        //_ = a
         if nameTextField.text! == "" {
             return false
         }else{
