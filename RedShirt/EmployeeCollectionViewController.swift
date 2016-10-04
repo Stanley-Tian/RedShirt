@@ -13,7 +13,9 @@ private let reuseIdentifier = "Cell"
 
 class EmployeeCollectionViewController: UICollectionViewController {
     
-    var employees =  try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
+    var employees:Results<EmployeeModel>!
+    //var selectedEmployee:EmployeeModel!
+    //var employees =  try! Realm().objects(EmployeeModel.self)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,16 +45,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
         
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
     // MARK: UICollectionViewDataSource
     
@@ -105,5 +98,30 @@ class EmployeeCollectionViewController: UICollectionViewController {
      
      }
      */
-    
 }
+
+extension EmployeeCollectionViewController{
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        //self.selectedEmployee = employees[indexPath.row]
+        
+//        let destinationController = EmployeeDetailViewController()
+//        destinationController.employee = employees[indexPath.row]
+//        
+//        destinationController.performSegue(withIdentifier: "DetailSegue", sender: self)
+    }
+}
+
+     // MARK: - Navigation
+
+extension EmployeeCollectionViewController{
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailSegue"{
+            let destinationController = segue.destination as! EmployeeDetailViewController
+            let cell = sender as! EmployeeCollectionViewCell
+            let indexPath = self.collectionView?.indexPath(for: cell)
+            destinationController.employee = employees[(indexPath?.row)!]
+
+        }
+     }
+}
+ 

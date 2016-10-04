@@ -15,6 +15,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var briefTextView: UITextView!
 
+    var employeeLargeImage:UIImage!
     var employee: EmployeeModel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.employeeLargeImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         portraitImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage //downcasting到UIImage类型
         portraitImageView.contentMode = .scaleAspectFit                //设置填充样式
         portraitImageView.clipsToBounds = false                               //设置圆角剪裁
@@ -91,13 +93,10 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             newEmployee.name = name!
             newEmployee.brief = brief!
             newEmployee.rating = 5
-            
-            let targetSmallPortraitWidth = 128
-            let scale = Double(targetSmallPortraitWidth) / Double(portrait!.size.width)
-            let smallPortrait = UIImage(data: UIImagePNGRepresentation(portrait!)!  as Data, scale: CGFloat(scale))
-            
-            
-            //newEmployee.portrait = UIImagePNGRepresentation(portrait!)! as NSData
+
+            let smallPortrait = Tools.resizeImage(image: portrait!, newWidth: CGFloat(128))
+
+            newEmployee.image = UIImagePNGRepresentation(portrait!)! as NSData
             newEmployee.portrait = UIImagePNGRepresentation(smallPortrait!)! as NSData
 
             

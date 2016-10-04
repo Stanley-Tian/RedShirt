@@ -54,6 +54,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="DUL-Zs-SyR" id="OKF-4k-Sp5"/>
                                     <outlet property="portraitImageView" destination="p9M-Ef-0jY" id="rpR-ga-pTZ"/>
+                                    <segue destination="sVu-68-Z3v" kind="show" identifier="DetailSegue" id="E8R-5L-1Df"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -73,6 +74,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvK-TI-DcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="122" y="-31"/>
+        </scene>
+        <!--Employee Detail View Controller-->
+        <scene sceneID="1e5-jR-7hL">
+            <objects>
+                <viewController id="sVu-68-Z3v" customClass="EmployeeDetailViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LCw-53-Gtw"/>
+                        <viewControllerLayoutGuide type="bottom" id="sLu-4s-Txa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GCQ-yb-S0r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Gw-Rz7">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PNm-AJ-813">
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PNm-AJ-813" secondAttribute="height" multiplier="16:9" id="4qW-lE-LkM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hin-CX-nPW">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-vm-WcH">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIg-Hg-4xo">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务宗旨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nps-BP-idp">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="57" id="onP-7I-y8i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="v8w-yf-cvO">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近30天赏金：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgl-xD-kYL">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="5xN-2A-3Oz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-lo-jyn">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PNm-AJ-813" firstAttribute="leading" secondItem="hWK-Gw-Rz7" secondAttribute="leading" id="SH4-Fc-sGE"/>
+                                    <constraint firstAttribute="trailing" secondItem="PNm-AJ-813" secondAttribute="trailing" id="ogr-MT-cWc"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hWK-Gw-Rz7" firstAttribute="top" secondItem="LCw-53-Gtw" secondAttribute="bottom" constant="20" id="Abe-Mh-NSt"/>
+                            <constraint firstItem="hWK-Gw-Rz7" firstAttribute="leading" secondItem="GCQ-yb-S0r" secondAttribute="leadingMargin" id="FN6-8C-rto"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hWK-Gw-Rz7" secondAttribute="trailing" id="mux-Pf-yvU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="briefLabel" destination="nps-BP-idp" id="imC-jR-VAe"/>
+                        <outlet property="employeeImageView" destination="PNm-AJ-813" id="zaK-u4-yYn"/>
+                        <outlet property="latest30DaysRewardLabel" destination="qh7-lo-jyn" id="HgY-yT-pV1"/>
+                        <outlet property="nameLabel" destination="9FN-vm-WcH" id="oJg-hJ-bgz"/>
+                        <outlet property="ratingLabel" destination="xIg-Hg-4xo" id="op8-s3-Rkv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z92-XO-fZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120.8" y="776.76161919040487"/>
         </scene>
         <!--设置-->
         <scene sceneID="E2x-Dl-FBX">

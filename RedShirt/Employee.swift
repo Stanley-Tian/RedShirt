@@ -9,10 +9,11 @@
 import Foundation
 import RealmSwift
 
+// v1
 class EmployeeModel:Object{
-    dynamic var name:String = ""
-    dynamic var brief:String = ""
-    dynamic var rating:Double = 0.0
-    dynamic var portrait:NSData = NSData()
-    
+    dynamic var name:       String = ""
+    dynamic var brief:      String = ""
+    dynamic var rating:     Double = 0.0
+    dynamic var portrait:   NSData = NSData()
+    dynamic var image:      NSData = NSData()
 }
