@@ -47,8 +47,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
                     imagePicker.delegate = self                           // 设置代理
                     imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
                     imagePicker.sourceType = .camera       //设置image的类型。若要调用相机则为.camera
-                    //imagePicker.popoverPresentationController?.sourceView = self.view
-                    //imagePicker.popoverPresentationController?.sourceRect = self.view.bounds
+
                     self.present(imagePicker, animated: true, completion: nil) // 调用
                 }
             })
@@ -59,9 +58,6 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
                     imagePicker.delegate = self                           // 设置代理
                     imagePicker.allowsEditing = true                // 禁用编辑，若为true则用户可以缩放图片后再用
                     imagePicker.sourceType = .photoLibrary       //设置image的类型。若要调用相机则为.camera
-                    // to support iPad
-                    //imagePicker.popoverPresentationController?.sourceView = self.view
-                    //imagePicker.popoverPresentationController?.sourceRect = self.view.bounds
                     
                     self.present(imagePicker, animated: true, completion: nil) // 调用
                 }
@@ -86,7 +82,11 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        self.employeeLargeImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let originImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        self.employeeLargeImage = Tools.resizeImage(image: originImage!, newWidth: 512)
+        
+        
         portraitImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage //downcasting到UIImage类型
         portraitImageView.contentMode = .scaleAspectFit                //设置填充样式
         portraitImageView.clipsToBounds = false                               //设置圆角剪裁
@@ -105,7 +105,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
 
             let smallPortrait = Tools.resizeImage(image: portrait!, newWidth: CGFloat(128))
 
-            newEmployee.image = UIImagePNGRepresentation(portrait!)! as NSData
+            newEmployee.image = UIImagePNGRepresentation(employeeLargeImage)! as NSData
             newEmployee.portrait = UIImagePNGRepresentation(smallPortrait!)! as NSData
 
             
