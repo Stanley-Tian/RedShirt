@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--眉州东坡酒楼-->
+        <!--主页-->
         <scene sceneID="KJZ-O4-0Su">
             <objects>
-                <collectionViewController id="YQf-Wl-4Iq" customClass="EmployeeCollectionViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="YQf-Wl-4Iq" userLabel="主页" customClass="EmployeeCollectionViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzG-R8-qI9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,16 +63,142 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="眉州东坡酒楼" id="k3G-Rx-gTV">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="a1t-v6-Bi9">
+                        <barButtonItem key="rightBarButtonItem" title="设置" style="plain" id="guP-uy-vyw">
                             <connections>
-                                <segue destination="aI4-gR-TLo" kind="presentation" id="kdE-iy-10m"/>
+                                <segue destination="sLr-8i-sKw" kind="show" id="gUU-Hn-Z9q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvK-TI-DcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975.20000000000005" y="-11.244377811094454"/>
+            <point key="canvasLocation" x="122" y="-31"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="E2x-Dl-FBX">
+            <objects>
+                <tableViewController id="sLr-8i-sKw" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BlP-x0-VKq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="E0N-i1-XD2">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="myM-x7-Ik8">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="myM-x7-Ik8" id="7c0-Zu-zfp">
+                                            <frame key="frameInset" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-Yu-bvx">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Rbx-Yu-bvx" secondAttribute="height" multiplier="1:1" id="q8W-K5-nNh"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="员工管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZg-rW-NNN" userLabel="员工管理">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pZg-rW-NNN" secondAttribute="bottom" id="9yA-p6-A1w"/>
+                                                <constraint firstItem="Rbx-Yu-bvx" firstAttribute="leading" secondItem="7c0-Zu-zfp" secondAttribute="leadingMargin" constant="8" id="HZM-sQ-J1y"/>
+                                                <constraint firstItem="pZg-rW-NNN" firstAttribute="leading" secondItem="Rbx-Yu-bvx" secondAttribute="trailing" constant="10" id="OKp-am-KyW"/>
+                                                <constraint firstItem="Rbx-Yu-bvx" firstAttribute="top" secondItem="7c0-Zu-zfp" secondAttribute="topMargin" id="WA7-FK-4oA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rbx-Yu-bvx" secondAttribute="bottom" id="fmm-Ny-fIy"/>
+                                                <constraint firstItem="pZg-rW-NNN" firstAttribute="top" secondItem="7c0-Zu-zfp" secondAttribute="topMargin" id="qbp-7I-KsH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Px3-PM-YWl" kind="show" id="WSg-2c-4Ub"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="sLr-8i-sKw" id="pS1-sg-2bc"/>
+                            <outlet property="delegate" destination="sLr-8i-sKw" id="uFG-Us-08G"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="a2j-nI-rJY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1BG-ab-8bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2142" y="-28"/>
+        </scene>
+        <!--员工管理-->
+        <scene sceneID="ns7-Vg-wEb">
+            <objects>
+                <tableViewController id="Px3-PM-YWl" userLabel="员工管理" customClass="EditEmployeeTableViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="oIJ-52-vQN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Vlr-dg-WsX" customClass="EditEmployeeTableViewCell" customModule="RedShirt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vlr-dg-WsX" id="XBj-W5-KrL">
+                                    <frame key="frameInset" width="375" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9xG-Ly-MQK" userLabel="头像">
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="9xG-Ly-MQK" secondAttribute="height" multiplier="1:1" id="0fQ-d3-xw8"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Scb-PS-ib4" userLabel="详情">
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-Vt-d3j">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fu-nH-eo0">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9xG-Ly-MQK" firstAttribute="top" secondItem="XBj-W5-KrL" secondAttribute="topMargin" id="5wQ-SV-YOg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Scb-PS-ib4" secondAttribute="trailing" id="7gI-tz-uuh"/>
+                                        <constraint firstItem="Scb-PS-ib4" firstAttribute="top" secondItem="XBj-W5-KrL" secondAttribute="topMargin" id="7jY-6o-Ylt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9xG-Ly-MQK" secondAttribute="bottom" id="DiW-CC-nez"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Scb-PS-ib4" secondAttribute="bottom" id="I3r-jh-1WY"/>
+                                        <constraint firstItem="9xG-Ly-MQK" firstAttribute="leading" secondItem="XBj-W5-KrL" secondAttribute="leadingMargin" constant="8" id="lUq-m3-eZF"/>
+                                        <constraint firstItem="Scb-PS-ib4" firstAttribute="leading" secondItem="9xG-Ly-MQK" secondAttribute="trailing" constant="9" id="qHr-18-HWV"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="Wvs-Vt-d3j" id="Lxj-In-7Pi"/>
+                                    <outlet property="portraitImageView" destination="9xG-Ly-MQK" id="w96-9D-MJV"/>
+                                    <outlet property="ratingLabel" destination="4fu-nH-eo0" id="Pbt-Wp-y7k"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Px3-PM-YWl" id="P8S-hH-OYV"/>
+                            <outlet property="delegate" destination="Px3-PM-YWl" id="SsM-ar-fKm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="UwS-Gr-RV3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCZ-la-yeT">
+                            <connections>
+                                <segue destination="aI4-gR-TLo" kind="presentation" id="ssK-xe-bdm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UOB-Ac-YQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3981.5999999999999" y="-31.03448275862069"/>
         </scene>
         <!--增加新员工-->
         <scene sceneID="LRn-YF-ai1">
@@ -171,13 +297,13 @@
                     <navigationItem key="navigationItem" title="增加新员工" id="8Km-au-5yw">
                         <barButtonItem key="leftBarButtonItem" tag="10" title="取消" style="plain" id="gku-he-G7p">
                             <connections>
-                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToCancelWithSegue:" id="Zi2-dc-ylG"/>
+                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToCancelWithSegue:" id="8TF-Ld-QdG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="11" title="保存" style="plain" id="Ht6-bc-jFn">
                             <connections>
                                 <action selector="save:" destination="say-2C-k7D" id="vdi-u0-Dah"/>
-                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToSaveWithSegue:" id="F7v-s7-Zcl"/>
+                                <segue destination="wGV-dv-mvy" kind="unwind" unwindAction="unwindToSaveWithSegue:" id="zAN-y5-4TU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,7 +316,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t5w-dy-Vo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wGV-dv-mvy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2784.057971014493" y="-10.597826086956523"/>
+            <point key="canvasLocation" x="5785" y="-28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D82-DF-cbg">
@@ -208,7 +334,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk0-jg-P9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="-11.244377811094454"/>
+            <point key="canvasLocation" x="-818" y="-31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8KM-a9-ge9">
@@ -226,10 +352,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4K3-hF-UHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.8115942028987" y="-10.597826086956523"/>
+            <point key="canvasLocation" x="4969" y="-28"/>
         </scene>
     </scenes>
     <resources>
+        <image name="people" width="256" height="256"/>
         <image name="photo" width="128" height="128"/>
     </resources>
 </document>
