@@ -14,19 +14,11 @@ private let reuseIdentifier = "Cell"
 class EmployeeCollectionViewController: UICollectionViewController {
     
     var employees =  try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
-    @IBAction func unwindToCancel(segue:UIStoryboardSegue){  }
-    @IBAction func unwindToSave(segue:UIStoryboardSegue){
-        //let addEmployeeController = segue.source as! AddEmployeeTableViewController
-        //let e = addEmployeeController.employee
-        //print(e)
-        employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
-        collectionView!.reloadData()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = true
         employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         
@@ -46,6 +38,11 @@ class EmployeeCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
+        
+    }
     
     /*
      // MARK: - Navigation

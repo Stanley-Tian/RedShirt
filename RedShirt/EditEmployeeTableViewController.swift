@@ -52,7 +52,7 @@ extension EditEmployeeTableViewController{
         
         var stars = ""
 
-        while stars.characters.count < employees[indexPath.row].rating {
+        while stars.characters.count < Int(employees[indexPath.row].rating) {
             stars += "★"
         }
         
