@@ -9,11 +9,18 @@
 import Foundation
 import RealmSwift
 
-// v1
+
+//v0
 class EmployeeModel:Object{
-    dynamic var name:       String = ""
-    dynamic var brief:      String = ""
-    dynamic var rating:     Double = 0.0
-    dynamic var portrait:   NSData = NSData()
-    dynamic var image:      NSData = NSData()
+    dynamic var name:       String  = ""
+    dynamic var brief:      String  = ""
+    dynamic var rating:     Double  = 0.0
+    dynamic var portrait:   NSData  = NSData()
+    dynamic var image:      NSData  = NSData()
+    dynamic var id:         String  = ""
+    dynamic var createdAt:  NSDate  = NSDate()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

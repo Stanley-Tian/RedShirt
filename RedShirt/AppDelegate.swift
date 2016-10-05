@@ -16,9 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Config for Realm
+        // Config for Realm, do this for real publish
+        /*
+         
         let config = Realm.Configuration(
-            schemaVersion: 1,// current Version
+            schemaVersion: 2,// current Version
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                     migration.enumerateObjects(ofType: EmployeeModel.className()) { oldObject, newObject in
@@ -28,11 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         newObject!["image"] = NSData()
                     }
                 }
+                if (oldSchemaVersion < 2) {
+                    migration.enumerateObjects(ofType: EmployeeModel.className()) { oldObject, newObject in
+                        // update value type
+                        // add a new var
+                        newObject!["id"] = UUID().uuidString
+                        newObject!["createdAt"] = Date()
+
+                    }
+                }
         })
 
 
         Realm.Configuration.defaultConfiguration = config
         print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
+ */
+                print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
         return true
     }
     

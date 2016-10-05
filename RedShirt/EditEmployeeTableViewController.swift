@@ -9,25 +9,25 @@
 import UIKit
 import RealmSwift
 class EditEmployeeTableViewController: UITableViewController {
-
+    
     var employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
 // MARK: - Table view data source
@@ -44,14 +44,14 @@ extension EditEmployeeTableViewController{
     }
     
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EditEmployeeTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EditEmployeeTableViewCell
         
         cell.portraitImageView?.image = UIImage(data: employees[indexPath.row].portrait as Data)
         cell.nameLabel?.text = employees[indexPath.row].name
         
         var stars = ""
-
+        
         while stars.characters.count < Int(employees[indexPath.row].rating) {
             stars += "★"
         }
@@ -61,11 +61,11 @@ extension EditEmployeeTableViewController{
         }
         
         cell.ratingLabel?.text = stars
-     
-     // Configure the cell...
-     
-     return cell
-     }
+        
+        // Configure the cell...
+        
+        return cell
+    }
     
     
     /*
@@ -108,7 +108,7 @@ extension EditEmployeeTableViewController{
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "编辑", handler: {
             (action,indexPath) -> Void in
-            
+            self.performSegue(withIdentifier: "ToEditSegue", sender: self.tableView.cellForRow(at: indexPath))
         })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "删除", handler: {(action,indexPath) -> Void in
@@ -117,7 +117,7 @@ extension EditEmployeeTableViewController{
                 realm.delete(self.employees[indexPath.row])
             }
             self.tableView.deleteRows(at: [indexPath], with: .fade)
-        
+            
         })
         
         editAction.backgroundColor = UIColor.blue
@@ -129,14 +129,28 @@ extension EditEmployeeTableViewController{
 // MARK: - Navigation
 extension EditEmployeeTableViewController{
     
-    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "ToEditSegue"{
+            //let destinationController = segue.destination
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let destinationController = destinationNavigationController.topViewController as! AddEmployeeTableViewController
+
+            let cellSender = sender as! EditEmployeeTableViewCell
+            destinationController.employee = employees[(tableView.indexPath(for: cellSender)?.row)!]
+            
+            destinationController.sourceSegue = "ToEditSegue"
+        }
+        if segue.identifier == "ToAddSegue"{
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let destinationController = destinationNavigationController.topViewController as! AddEmployeeTableViewController
+            
+            destinationController.sourceSegue = "ToAddSegue"
+        }
+        
+    }
     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     @IBAction func unwindToCancel(segue:UIStoryboardSegue){  }
     @IBAction func unwindToSave(segue:UIStoryboardSegue){
         //let addEmployeeController = segue.source as! AddEmployeeTableViewController
