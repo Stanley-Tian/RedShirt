@@ -15,6 +15,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var briefTextView: UITextView!
 
+    @IBOutlet weak var saveBarButtomItem: UIBarButtonItem!
     var employeeLargeImage:UIImage!
     var employee: EmployeeModel!
     override func viewDidLoad() {
@@ -71,7 +72,6 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             // support iPad
             optionMenu.popoverPresentationController?.sourceView = self.view
             optionMenu.popoverPresentationController?.sourceRect = (tableView.cellForRow(at: indexPath)?.frame)!
-
             
             self.present(optionMenu, animated: true, completion: nil)
             

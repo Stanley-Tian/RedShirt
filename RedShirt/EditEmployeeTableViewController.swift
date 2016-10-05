@@ -103,6 +103,29 @@ extension EditEmployeeTableViewController{
      }
      */
 }
+// MARK: - tableview Delegate
+extension EditEmployeeTableViewController{
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .default, title: "编辑", handler: {
+            (action,indexPath) -> Void in
+            
+        })
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "删除", handler: {(action,indexPath) -> Void in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(self.employees[indexPath.row])
+            }
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        })
+        
+        editAction.backgroundColor = UIColor.blue
+        
+        return [deleteAction, editAction]
+    }
+}
+
 // MARK: - Navigation
 extension EditEmployeeTableViewController{
     
