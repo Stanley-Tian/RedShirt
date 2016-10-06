@@ -148,7 +148,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
                 "image": updatedEmployee.image,
                 "portrait": updatedEmployee.portrait,
                 ], update: true)
-            self.employee = updatedEmployee
+            //self.employee = updatedEmployee
         }
     }
 

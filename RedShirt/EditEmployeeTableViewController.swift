@@ -105,6 +105,9 @@ extension EditEmployeeTableViewController{
 }
 // MARK: - tableview Delegate
 extension EditEmployeeTableViewController{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "编辑", handler: {
             (action,indexPath) -> Void in
