@@ -8,6 +8,7 @@ target 'RedShirt' do
   # Pods for RedShirt
    pod 'RealmSwift'
    pod 'Alamofire'
+   pod 'SwiftyJSON'
 end
 
 post_install do |installer|
