@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -202,6 +203,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Lgl-xD-kYL" firstAttribute="width" secondItem="qh7-lo-jyn" secondAttribute="width" multiplier="0.5" id="SDw-g9-jw4"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -592,6 +596,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="VdJ-fu-Tkg" secondAttribute="bottom" id="Nug-Mj-PdY"/>
                                                     <constraint firstAttribute="trailing" secondItem="VdJ-fu-Tkg" secondAttribute="trailing" id="cjr-jA-g4L"/>
                                                     <constraint firstAttribute="bottom" secondItem="70q-V7-9kU" secondAttribute="bottom" id="g56-t0-oAp"/>
+                                                    <constraint firstItem="VdJ-fu-Tkg" firstAttribute="width" secondItem="70q-V7-9kU" secondAttribute="width" multiplier="0.3" id="rWq-g7-bLz"/>
                                                     <constraint firstItem="70q-V7-9kU" firstAttribute="leading" secondItem="yY4-3E-jXv" secondAttribute="leading" id="ul0-hI-oa9"/>
                                                 </constraints>
                                             </view>
@@ -616,6 +621,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="SCx-k3-A9y" firstAttribute="width" secondItem="qDY-QR-D5t" secondAttribute="width" multiplier="0.3" id="UzN-xY-ycx"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw7-lg-bg7" userLabel="Inner 3">
                                         <subviews>
