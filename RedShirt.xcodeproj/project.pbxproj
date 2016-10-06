@@ -58,6 +58,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B06BED41DA5DD0100CCC252 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B3816021DA0F94E004D706C /* Main.storyboard */,
+				1B38160A1DA0F94E004D706C /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1B06BED51DA5DD2800CCC252 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B3815FE1DA0F94E004D706C /* AppDelegate.swift */,
+				1B3816081DA0F94E004D706C /* Assets.xcassets */,
+				1B38160D1DA0F94E004D706C /* Info.plist */,
+				1B38161B1DA13762004D706C /* Tools.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		1B3815F21DA0F94D004D706C = {
 			isa = PBXGroup;
 			children = (
@@ -79,15 +99,10 @@
 		1B3815FD1DA0F94E004D706C /* RedShirt */ = {
 			isa = PBXGroup;
 			children = (
+				1B06BED51DA5DD2800CCC252 /* Supporting Files */,
+				1B06BED41DA5DD0100CCC252 /* Views */,
 				1B5D52B11DA4F64300886D08 /* Models */,
-				1B5D52B01DA4F61F00886D08 /* Cells */,
 				1B5D52AF1DA4F60700886D08 /* Controllers */,
-				1B3815FE1DA0F94E004D706C /* AppDelegate.swift */,
-				1B3816021DA0F94E004D706C /* Main.storyboard */,
-				1B3816081DA0F94E004D706C /* Assets.xcassets */,
-				1B38160A1DA0F94E004D706C /* LaunchScreen.storyboard */,
-				1B38160D1DA0F94E004D706C /* Info.plist */,
-				1B38161B1DA13762004D706C /* Tools.swift */,
 			);
 			path = RedShirt;
 			sourceTree = "<group>";
@@ -95,6 +110,7 @@
 		1B5D52AF1DA4F60700886D08 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B5D52B01DA4F61F00886D08 /* Cells */,
 				1B17C1C61DA34A9600FF83D0 /* EditEmployeeTableViewController.swift */,
 				1B3816131DA0F9E9004D706C /* EmployeeCollectionViewController.swift */,
 				1BFBD76C1DA4D04D001BEF01 /* AddPhotoImagePickerController.swift */,

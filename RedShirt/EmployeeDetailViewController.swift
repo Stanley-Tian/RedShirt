@@ -14,13 +14,50 @@ class EmployeeDetailViewController: UIViewController {
     @IBOutlet weak var employeeImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var ratingLabel: UILabel!
-    
     @IBOutlet weak var briefLabel: UILabel!
-    
+    @IBOutlet weak var starsStackView: UIStackView!
     @IBOutlet weak var latest30DaysRewardLabel: UILabel!
     
+    @IBOutlet weak var star1Button: UIButton!
+    @IBOutlet weak var star2Button: UIButton!
+    @IBOutlet weak var star3Button: UIButton!
+    @IBOutlet weak var star4Button: UIButton!
+    @IBOutlet weak var star5Button: UIButton!
+    
+    
+    @IBAction func starButtonClick(_ sender: UIButton) {
+
+        let starsCount = sender.tag
+        paintStarButtons(starsCount)
+    }
+    
+    func clearStarButtons(){
+        star1Button.setTitle("☆", for: .normal)
+        star2Button.setTitle("☆", for: .normal)
+        star3Button.setTitle("☆", for: .normal)
+        star4Button.setTitle("☆", for: .normal)
+        star5Button.setTitle("☆", for: .normal)
+    }
+    func paintStarButtons(_ starsCount:Int){
+        clearStarButtons()
+        if starsCount >= 1 {
+            star1Button.setTitle("★", for: .normal)
+        }
+        if starsCount >= 2 {
+            star2Button.setTitle("★", for: .normal)
+        }
+        if starsCount >= 3 {
+            star3Button.setTitle("★", for: .normal)
+        }
+        if starsCount >= 4 {
+            star4Button.setTitle("★", for: .normal)
+        }
+        if starsCount >= 5 {
+            star5Button.setTitle("★", for: .normal)
+        }
+        
+    }
     var employee: EmployeeModel?
     override func viewDidLoad() {
         super.viewDidLoad()
