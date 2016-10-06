@@ -89,3 +89,17 @@ class EmployeeDetailViewController: UIViewController {
     */
 
 }
+// MARK: - Navigation
+extension EmployeeDetailViewController{
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+        if identifier == "cancelUnwindSegue" {
+            return true
+        }
+        if identifier == "saveUnwindSegue"{
+            return true
+        }
+        
+        return true
+    }
+}

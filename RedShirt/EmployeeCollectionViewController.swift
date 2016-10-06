@@ -110,12 +110,15 @@ extension EmployeeCollectionViewController{
 extension EmployeeCollectionViewController{
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailSegue"{
-            let destinationController = segue.destination as! EmployeeDetailViewController
+            let navigationController = segue.destination as! UINavigationController
+            let destinationController = navigationController.topViewController as! EmployeeDetailViewController
             let cell = sender as! EmployeeCollectionViewCell
             let indexPath = self.collectionView?.indexPath(for: cell)
             destinationController.employee = employees[(indexPath?.row)!]
 
         }
      }
+    @IBAction func unwindToCancel(segue:UIStoryboardSegue){}
+    @IBAction func unwindToSave(segue:UIStoryboardSegue){}
 }
- 
+

@@ -54,7 +54,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="DUL-Zs-SyR" id="OKF-4k-Sp5"/>
                                     <outlet property="portraitImageView" destination="p9M-Ef-0jY" id="rpR-ga-pTZ"/>
-                                    <segue destination="sVu-68-Z3v" kind="show" identifier="DetailSegue" id="E8R-5L-1Df"/>
+                                    <segue destination="Ze7-Rf-AJa" kind="presentation" identifier="DetailSegue" id="E8R-5L-1Df"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -205,6 +205,11 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCi-ML-zMR">
+                                <frame key="frameInset" minX="686" minY="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -214,6 +219,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hWK-Gw-Rz7" secondAttribute="trailing" id="kdk-Em-pfI"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dyF-hE-XRO">
+                        <barButtonItem key="leftBarButtonItem" tag="10" title="取消" style="plain" id="N2b-Nd-WBM">
+                            <connections>
+                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="saveUnwindSegue" unwindAction="unwindToCancelWithSegue:" id="Ydb-Eg-5bk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="11" title="保存" style="plain" id="KpQ-k6-c7d">
+                            <connections>
+                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="cancelUnwindSegue" unwindAction="unwindToSaveWithSegue:" id="mi0-rZ-eZA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="briefLabel" destination="nps-BP-idp" id="imC-jR-VAe"/>
                         <outlet property="employeeImageView" destination="PNm-AJ-813" id="zaK-u4-yYn"/>
@@ -229,8 +248,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z92-XO-fZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eB5-bc-uDy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="120.8" y="776.76161919040487"/>
+            <point key="canvasLocation" x="885.9375" y="776.3671875"/>
         </scene>
         <!--设置-->
         <scene sceneID="E2x-Dl-FBX">
@@ -552,17 +572,36 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-oX-K0X" userLabel="Inner 1">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label 3 - hugging 250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70q-V7-9kU">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 2 hugging 251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdJ-fu-Tkg">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yY4-3E-jXv" userLabel="helperview">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label 1 - hugging 250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70q-V7-9kU">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 2 hugging 251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdJ-fu-Tkg">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="VdJ-fu-Tkg" firstAttribute="top" secondItem="yY4-3E-jXv" secondAttribute="top" id="2CA-LN-aXd"/>
+                                                    <constraint firstItem="70q-V7-9kU" firstAttribute="top" secondItem="yY4-3E-jXv" secondAttribute="top" id="3hQ-1N-m0o"/>
+                                                    <constraint firstAttribute="bottom" secondItem="VdJ-fu-Tkg" secondAttribute="bottom" id="Nug-Mj-PdY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="VdJ-fu-Tkg" secondAttribute="trailing" id="cjr-jA-g4L"/>
+                                                    <constraint firstAttribute="bottom" secondItem="70q-V7-9kU" secondAttribute="bottom" id="g56-t0-oAp"/>
+                                                    <constraint firstItem="70q-V7-9kU" firstAttribute="leading" secondItem="yY4-3E-jXv" secondAttribute="leading" id="ul0-hI-oa9"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yY4-3E-jXv" firstAttribute="top" secondItem="cPO-oX-K0X" secondAttribute="top" id="AIU-JI-LSE"/>
+                                            <constraint firstAttribute="bottom" secondItem="yY4-3E-jXv" secondAttribute="bottom" id="ZUp-Vd-CRp"/>
+                                            <constraint firstItem="yY4-3E-jXv" firstAttribute="leading" secondItem="cPO-oX-K0X" secondAttribute="leading" id="buT-uu-63S"/>
+                                            <constraint firstAttribute="trailing" secondItem="yY4-3E-jXv" secondAttribute="trailing" id="cUN-LW-QQE"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZY-ao-Bb2" userLabel="Inner 2">
                                         <subviews>
@@ -606,7 +645,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRB-HP-h6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1136" y="857"/>
+            <point key="canvasLocation" x="-1136.8" y="856.82158920539734"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XmM-JM-gA0">
+            <objects>
+                <viewController id="Apd-rA-kiE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A4i-eL-ciw"/>
+                        <viewControllerLayoutGuide type="bottom" id="l9c-hW-H8z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N3b-sN-sfK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ais-UN-JZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1177" y="1639"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8KM-a9-ge9">
@@ -626,12 +683,30 @@
             </objects>
             <point key="canvasLocation" x="4969" y="-28"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8pK-7T-ams">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ze7-Rf-AJa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cp6-FZ-TLD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sVu-68-Z3v" kind="relationship" relationship="rootViewController" id="x8E-gx-Mhu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5M-LM-eiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120.3125" y="776.3671875"/>
+        </scene>
     </scenes>
     <resources>
         <image name="people" width="256" height="256"/>
         <image name="photo" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ssK-xe-bdm"/>
+        <segue reference="TMX-ua-TtJ"/>
     </inferredMetricsTieBreakers>
 </document>
