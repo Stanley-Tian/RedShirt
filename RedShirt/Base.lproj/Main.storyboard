@@ -227,12 +227,12 @@
                     <navigationItem key="navigationItem" id="dyF-hE-XRO">
                         <barButtonItem key="leftBarButtonItem" tag="10" title="取消" style="plain" id="N2b-Nd-WBM">
                             <connections>
-                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="saveUnwindSegue" unwindAction="unwindToCancelWithSegue:" id="Ydb-Eg-5bk"/>
+                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="cancelUnwindSegue" unwindAction="unwindToCancelWithSegue:" id="ihD-sK-eVd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" tag="11" title="保存" style="plain" id="KpQ-k6-c7d">
                             <connections>
-                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="cancelUnwindSegue" unwindAction="unwindToSaveWithSegue:" id="mi0-rZ-eZA"/>
+                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="saveUnwindSegue" unwindAction="unwindToSaveWithSegue:" id="T8T-4L-gFk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

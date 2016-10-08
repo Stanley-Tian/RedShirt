@@ -46,6 +46,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
         
     }
 
+
     
     // MARK: UICollectionViewDataSource
     
@@ -118,7 +119,11 @@ extension EmployeeCollectionViewController{
 
         }
      }
-    @IBAction func unwindToCancel(segue:UIStoryboardSegue){}
-    @IBAction func unwindToSave(segue:UIStoryboardSegue){}
+    @IBAction func unwindToCancel(segue:UIStoryboardSegue){
+        print("unwindToCancel")
+    }
+    @IBAction func unwindToSave(segue:UIStoryboardSegue){
+        print("unwindToSave")
+    }
 }
 

@@ -24,14 +24,31 @@ class EmployeeDetailViewController: UIViewController {
     @IBOutlet weak var star3Button: UIButton!
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
-    
+    var employee: EmployeeModel?
+    var evaluation: EvaluationModel?
+    //var sourceSegue = ""
+
     
     @IBAction func starButtonClick(_ sender: UIButton) {
 
         let starsCount = sender.tag
         paintStarButtons(starsCount)
+        evaluation?.stars = starsCount
     }
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        nameLabel.text = employee?.name
+        
+        employeeImageView.image = UIImage(data:employee?.image as! Data )
+        
+        ratingLabel.text = Tools.createRatingStars(rating: employee!.rating)
+        
+        briefLabel.text = employee?.brief
+        
+        evaluation = EvaluationModel(stars: 0, reward: 0, employee: employee!)
+    }
     func clearStarButtons(){
         star1Button.setTitle("☆", for: .normal)
         star2Button.setTitle("☆", for: .normal)
@@ -58,18 +75,13 @@ class EmployeeDetailViewController: UIViewController {
         }
         
     }
-    var employee: EmployeeModel?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        nameLabel.text = employee?.name
+    func validtaion() -> Bool
+    {
+        if evaluation?.stars == 0 {
+            return false
+        }
         
-        employeeImageView.image = UIImage(data:employee?.image as! Data )
-        
-        ratingLabel.text = Tools.createRatingStars(rating: employee!.rating)
-        
-        briefLabel.text = employee?.brief
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,28 +90,38 @@ class EmployeeDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+
+ 
 
 }
 // MARK: - Navigation
 extension EmployeeDetailViewController{
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+        print((sender! as AnyObject).tag)
         if identifier == "cancelUnwindSegue" {
             return true
         }
         if identifier == "saveUnwindSegue"{
-            return true
+            if validtaion(){
+                evaluation?.save()
+                return true
+            }else{
+                let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
+                present(alertController, animated: true, completion: nil)
+                return false
+            }
         }
         
         return true
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+
     }
 }
