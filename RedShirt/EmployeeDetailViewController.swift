@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+import SwiftyJSON
 
 class EmployeeDetailViewController: UIViewController {
 
@@ -88,8 +90,9 @@ class EmployeeDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+    private func sendToServer(){
+        
+    }
     
     // MARK: - Navigation
 
@@ -109,6 +112,8 @@ extension EmployeeDetailViewController{
         if identifier == "saveUnwindSegue"{
             if validtaion(){
                 evaluation?.save()
+                let testDict = evaluation?.toDictionary()
+                    print(testDict)
                 return true
             }else{
                 let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
@@ -126,4 +131,33 @@ extension EmployeeDetailViewController{
         // Pass the selected object to the new view controller.
 
     }
+}
+
+extension Object {
+    func toDictionary() -> NSDictionary {
+        // 获取当前object各个属性的名称
+        let properties = self.objectSchema.properties.map { $0.name }
+        // 通过这些名称来建立一个字典
+        let dictionary = self.dictionaryWithValues(forKeys: properties)
+        // 建立一个可变字典
+        let mutabledic = NSMutableDictionary()
+        mutabledic.setValuesForKeys(dictionary)
+        
+        for prop in self.objectSchema.properties as [Property]! {
+            // find lists
+            if let nestedObject = self[prop.name] as? Object {
+                mutabledic.setValue(nestedObject.toDictionary(), forKey: prop.name)
+            } else if let nestedListObject = self[prop.name] as? ListBase {
+                var objects = [AnyObject]()
+                for index in 0..<nestedListObject._rlmArray.count  {
+                    let object = nestedListObject._rlmArray[index] as AnyObject
+                    objects.append(object.toDictionary())
+                }
+                mutabledic.setObject(objects, forKey: prop.name as NSCopying)
+            }
+            
+        }
+        return mutabledic
+    }
+    
 }
