@@ -112,6 +112,8 @@ extension EmployeeDetailViewController{
                 return true
             }else{
                 let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(alertAction)
                 present(alertController, animated: true, completion: nil)
                 return false
             }
