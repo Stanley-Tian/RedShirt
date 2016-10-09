@@ -8,7 +8,9 @@
 
 import UIKit
 import RealmSwift
-class AddEmployeeTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+import SQLite
+
+class AddEmployeeTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -18,6 +20,7 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
     var employeeLargeImage:UIImage!
     var employee: EmployeeModel!
     var sourceSegue: String?
+    //var employee2:Employee!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,6 +127,11 @@ class AddEmployeeTableViewController: UITableViewController,UIImagePickerControl
             realm.add(newEmployee)
             self.employee = newEmployee
         }
+        //sqlite version
+        if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!) != nil{
+            print("增加一名新员工成功！")
+        }
+        
     }
     func updateAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndLargeImage image:UIImage?, AndBrief brief:String?){
         let realm = try! Realm()

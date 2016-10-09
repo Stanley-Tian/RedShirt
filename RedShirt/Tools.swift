@@ -64,4 +64,8 @@ class Tools{
         }
         return stars
     }
+    
+    class func getApp() -> AppDelegate{
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 }

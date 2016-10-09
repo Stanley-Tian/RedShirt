@@ -8,43 +8,40 @@
 
 import UIKit
 import RealmSwift
+import SQLite
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    var db:Connection!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Config for Realm, do this for real publish
-        /*
-         
-        let config = Realm.Configuration(
-            schemaVersion: 2,// current Version
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
-                    migration.enumerateObjects(ofType: EmployeeModel.className()) { oldObject, newObject in
-                        // update value type
-                        newObject!["rating"] = oldObject!["rating"] as! Double
-                        // add a new var
-                        newObject!["image"] = NSData()
-                    }
-                }
-                if (oldSchemaVersion < 2) {
-                    migration.enumerateObjects(ofType: EmployeeModel.className()) { oldObject, newObject in
-                        // update value type
-                        // add a new var
-                        newObject!["id"] = UUID().uuidString
-                        newObject!["createdAt"] = Date()
-
-                    }
-                }
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        print(path)
+        db = try! Connection("\(path)/mainDatabase.sqlite3")
+        db.busyTimeout = 5
+        
+        db.busyHandler({ tries in
+            if tries >= 3 {
+                return false
+            }
+            return true
         })
-
-
-        Realm.Configuration.defaultConfiguration = config
-        print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
- */
+        let tableEmployee = Table("employee")
+        
+        let id = Expression<String>("id")
+        let name = Expression<String>("name")
+        let brief = Expression<String>("brief")
+        
+        try! db.run(tableEmployee.create(ifNotExists: true){ t in
+            t.column(id, primaryKey: true)
+            t.column(name)
+            t.column(brief)
+        })
+        
+        let testInsert = tableEmployee.insert(id <- UUID().uuidString,name <- "Jimi",brief <- "good")
+        _ = try! db.run(testInsert)
                 print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
         return true
     }
