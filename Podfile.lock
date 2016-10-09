@@ -1,23 +1,32 @@
 PODS:
-  - Alamofire (4.0.1)
   - Realm (2.0.2):
     - Realm/Headers (= 2.0.2)
   - Realm/Headers (2.0.2)
   - RealmSwift (2.0.2):
     - Realm (= 2.0.2)
-  - SwiftyJSON (3.1.0)
+  - SQLite.swift (0.10.1):
+    - SQLite.swift/standard (= 0.10.1)
+  - SQLite.swift/standard (0.10.1)
 
 DEPENDENCIES:
-  - Alamofire
   - RealmSwift
-  - SwiftyJSON
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`, branch `swift3-mariotaku`)
+
+EXTERNAL SOURCES:
+  SQLite.swift:
+    :branch: swift3-mariotaku
+    :git: https://github.com/stephencelis/SQLite.swift.git
+
+CHECKOUT OPTIONS:
+  SQLite.swift:
+    :commit: 5bc521eb8abd7f125a0fab8338f61064e19811d7
+    :git: https://github.com/stephencelis/SQLite.swift.git
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
   RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
-  SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
+  SQLite.swift: c54b2cb32c2ec77cd52bc7442d05dd51b0623861
 
-PODFILE CHECKSUM: 38a58c585fd07715c6786c3aac66bf90b79149c1
+PODFILE CHECKSUM: ea9bf51133cd430f071393c149b4e3c849cefa76
 
 COCOAPODS: 1.0.1

@@ -6,9 +6,11 @@ target 'RedShirt' do
   use_frameworks!
 
   # Pods for RedShirt
+   pod 'SQLite.swift', :git => 'https://github.com/stephencelis/SQLite.swift.git', :branch => 'swift3-mariotaku'
+
    pod 'RealmSwift'
-   pod 'Alamofire'
-   pod 'SwiftyJSON'
+   #pod 'Alamofire'
+   #pod 'SwiftyJSON'
 end
 
 post_install do |installer|
