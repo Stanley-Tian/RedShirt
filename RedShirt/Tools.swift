@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CoreData
+import SQLite
 
 //工具类
 class Tools{
@@ -69,3 +69,23 @@ class Tools{
         return UIApplication.shared.delegate as! AppDelegate
     }
 }
+// MARK: - Extensions for SQLite
+extension NSDate: Value {
+    public class var declaredDatatype: String {
+        return String.declaredDatatype
+    }
+    public class func fromDatatypeValue(_ stringValue: String) -> NSDate {
+        return SQLDateFormatter.date(from: stringValue)! as NSDate
+    }
+    public var datatypeValue: String {
+        return SQLDateFormatter.string(from: self as Date)
+    }
+}
+
+let SQLDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+    formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0) as TimeZone!
+    return formatter
+}()

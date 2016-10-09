@@ -33,9 +33,12 @@ class EmployeeTable: MainDatabase {
     private var id = Expression<String>("id")
     private let name = Expression<String>("name")
     private let brief = Expression<String>("brief")
+    private let portrait = Expression<SQLite.Blob?>("portrait")
+    private let createdAt = Expression<NSDate?>("createdAt")
+    private let rating = Expression<Double?>("rating")
 
     // 建表
-    override func createTable() {
+     override func createTable() {
         do {
             try super.db!.run(tableEmployee.create(ifNotExists: true){ table in
                 table.column(id, primaryKey: true)
@@ -46,11 +49,25 @@ class EmployeeTable: MainDatabase {
             print("创建table失败")
         }
     }
+    
+    func updateTable(){
+        do{
+            //try super.db!.run(tableEmployee.addColumn(rating))
+            try super.db!.run(tableEmployee.addColumn(portrait))
+            try super.db!.run(tableEmployee.addColumn(createdAt))
+        } catch {
+            print("增加列数据失败")
+        }
+    }
     // - MARK:CRUD -
     // CRUD
     func addAnEmployee(name:String, brief:String) -> Int64?{
         do {
-            let insert = tableEmployee.insert(self.name <- name, self.brief <- brief, self.id <- UUID().uuidString)
+            let insert = tableEmployee.insert(self.name <- name,
+                                              self.brief <- brief,
+                                              self.id <- UUID().uuidString,
+                                              self.rating <- 5.0,
+                                              self.createdAt <- NSDate())
             let rowid = try db!.run(insert)
             
             return rowid

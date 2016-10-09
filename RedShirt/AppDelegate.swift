@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var db:Connection!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // EmployeeTable.instance.updateTable()
+        
+        
+        /*
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         print(path)
         db = try! Connection("\(path)/mainDatabase.sqlite3")
@@ -42,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let testInsert = tableEmployee.insert(id <- UUID().uuidString,name <- "Jimi",brief <- "good")
         _ = try! db.run(testInsert)
-                print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
+ */
+                //print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
         return true
     }
     
