@@ -33,7 +33,8 @@ class EmployeeTable: MainDatabase {
     private var id = Expression<String>("id")
     private let name = Expression<String>("name")
     private let brief = Expression<String>("brief")
-    private let portrait = Expression<SQLite.Blob?>("portrait")
+    private let portrait = Expression<UIImage?>("portrait")
+    private let image = Expression<UIImage?>("image")
     private let createdAt = Expression<NSDate?>("createdAt")
     private let rating = Expression<Double?>("rating")
 
@@ -53,7 +54,7 @@ class EmployeeTable: MainDatabase {
     func updateTable(){
         do{
             //try super.db!.run(tableEmployee.addColumn(rating))
-            try super.db!.run(tableEmployee.addColumn(portrait))
+            try super.db!.run(tableEmployee.addColumn(image))
             try super.db!.run(tableEmployee.addColumn(createdAt))
         } catch {
             print("增加列数据失败")
@@ -61,11 +62,13 @@ class EmployeeTable: MainDatabase {
     }
     // - MARK:CRUD -
     // CRUD
-    func addAnEmployee(name:String, brief:String) -> Int64?{
+    func addAnEmployee(name:String, brief:String, portrait:UIImage, image:UIImage) -> Int64?{
         do {
-            let insert = tableEmployee.insert(self.name <- name,
+            let insert = tableEmployee.insert(self.id <- UUID().uuidString,
+                                              self.name <- name,
                                               self.brief <- brief,
-                                              self.id <- UUID().uuidString,
+                                              self.portrait <- portrait,
+                                              self.image <- image,
                                               self.rating <- 5.0,
                                               self.createdAt <- NSDate())
             let rowid = try db!.run(insert)

@@ -128,7 +128,7 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
             self.employee = newEmployee
         }
         //sqlite version
-        if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!) != nil{
+        if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!, portrait: portrait!, image: image!) != nil{
             print("增加一名新员工成功！")
         }
         
