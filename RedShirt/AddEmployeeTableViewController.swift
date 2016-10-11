@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 import SQLite
 
 class AddEmployeeTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -18,7 +18,7 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
     @IBOutlet weak var largeImageImageView: UIImageView!
     @IBOutlet weak var saveBarButtomItem: UIBarButtonItem!
     var employeeLargeImage:UIImage!
-    var employee: EmployeeModel!
+    var employee: Employee!
     var sourceSegue: String?
     //var employee2:Employee!
     override func viewDidLoad() {
@@ -32,14 +32,14 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
         for _ in 1...5{
             print("************************")
         }
-        print( Realm.Configuration.defaultConfiguration.fileURL ?? "can't find the realm url")
+        //print( Realm.Configuration.defaultConfiguration.fileURL ?? "can't find the realm url")
         if let sourceSegue = self.sourceSegue {
             if sourceSegue == "ToEditSegue"{
                 title = "修改员工资料"
-                portraitImageView.image = UIImage(data: employee.portrait as Data)
+                portraitImageView.image = employee.portrait
                 nameTextField.text = employee.name
                 briefTextView.text = employee.brief
-                largeImageImageView.image = UIImage(data: employee.image as Data)
+                largeImageImageView.image = employee.image
             }
         }
     }
@@ -109,7 +109,9 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
         
     }
     // try to save with realm
+    
     func addAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndLargeImage image:UIImage?, AndBrief brief:String?){
+        /*
         let realm = try! Realm()
         try! realm.write {
             let newEmployee = EmployeeModel()
@@ -127,6 +129,8 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
             realm.add(newEmployee)
             self.employee = newEmployee
         }
+ */
+ 
         //sqlite version
         if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!, portrait: portrait!, image: image!) != nil{
             print("增加一名新员工成功！")
@@ -134,6 +138,7 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
         
     }
     func updateAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndLargeImage image:UIImage?, AndBrief brief:String?){
+        /*
         let realm = try! Realm()
         try! realm.write {
             let updatedEmployee = EmployeeModel()
@@ -158,6 +163,7 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
                 ], update: true)
             //self.employee = updatedEmployee
         }
+ */
     }
 
     func performValidation() -> Bool{

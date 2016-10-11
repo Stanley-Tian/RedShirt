@@ -25,7 +25,7 @@ class EmployeeDetailViewController: UIViewController {
     @IBOutlet weak var star3Button: UIButton!
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
-    var employee: EmployeeModel?
+    var employee: Employee?
     var evaluation: EvaluationModel?
     //var sourceSegue = ""
 
@@ -42,13 +42,13 @@ class EmployeeDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         nameLabel.text = employee?.name
         
-        employeeImageView.image = UIImage(data:employee?.image as! Data )
+        employeeImageView.image = employee?.image
         
-        ratingLabel.text = Tools.createRatingStars(rating: employee!.rating)
+        ratingLabel.text = Tools.createRatingStars(rating: employee!.rating!)
         
         briefLabel.text = employee?.brief
         
-        evaluation = EvaluationModel(stars: 0, reward: 0, employee: employee!)
+        //evaluation = EvaluationModel(stars: 0, reward: 0, employee: employee!)
     }
     func clearStarButtons(){
         star1Button.setTitle("☆", for: .normal)

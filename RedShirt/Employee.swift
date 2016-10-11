@@ -24,9 +24,28 @@ class EmployeeModel:Object{
         return "id"
     }
 }
+class Employee{
+    let id: String
+    var name: String
+    var brief: String
+    var portrait: UIImage?
+    var image: UIImage?
+    var createdAt: Date?
+    var rating: Double?
+    
+    init(id:String, name:String, brief:String, portrait:UIImage?, image:UIImage?, createdAt:Date?, rating:Double?) {
+        self.id = id
+        self.name = name
+        self.brief = brief
+        self.portrait = portrait
+        self.image = image
+        self.createdAt = createdAt
+        self.rating = rating
+    }
+}
 class EmployeeTable: MainDatabase {
     static let instance = EmployeeTable()
-
+    
     // Tables
     private let tableEmployee = Table("employee")
     // columns
@@ -37,9 +56,9 @@ class EmployeeTable: MainDatabase {
     private let image = Expression<UIImage?>("image")
     private let createdAt = Expression<NSDate?>("createdAt")
     private let rating = Expression<Double?>("rating")
-
+    
     // 建表
-     override func createTable() {
+    override func createTable() {
         do {
             try super.db!.run(tableEmployee.create(ifNotExists: true){ table in
                 table.column(id, primaryKey: true)
@@ -62,6 +81,7 @@ class EmployeeTable: MainDatabase {
     }
     // - MARK:CRUD -
     // CRUD
+    // MARK:CREATE
     func addAnEmployee(name:String, brief:String, portrait:UIImage, image:UIImage) -> Int64?{
         do {
             let insert = tableEmployee.insert(self.id <- UUID().uuidString,
@@ -78,5 +98,38 @@ class EmployeeTable: MainDatabase {
             print("Insert failed")
             return nil
         }
+    }
+    
+    // MARK:READ
+    func getEmployees() -> [Employee] {
+        var employees = [Employee]()
+        
+        do {
+            for employee in try db!.prepare(self.tableEmployee){
+                employees.append(Employee(id: employee[id],
+                                          name: employee[name],
+                                          brief: employee[brief],
+                                          portrait: employee.get(portrait),
+                                          image: employee.get(image),
+                                          createdAt: (employee.get(createdAt) as? Date),
+                                          rating: employee[rating]))
+            }
+        }catch{
+            print("获取员工数据失败")
+        }
+        return employees
+    }
+    // MARK:UPDATE
+    // MARK:DELETE
+    func deleteAnEmployee(byId employeeId:String) -> Bool {
+        do {
+            let employeeToDelete = tableEmployee.filter(id == employeeId)
+            try db!.run(employeeToDelete.delete())
+            return true
+        } catch {
+            print("删除员工失败！")
+            return false
+        }
+        return true
     }
 }

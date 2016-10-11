@@ -10,7 +10,8 @@ import UIKit
 import RealmSwift
 class EditEmployeeTableViewController: UITableViewController {
     
-    var employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
+    //var employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
+    var employees:[Employee]!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +21,8 @@ class EditEmployeeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
+        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
+        employees = EmployeeTable.instance.getEmployees()
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,12 +49,12 @@ extension EditEmployeeTableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EditEmployeeTableViewCell
         
-        cell.portraitImageView?.image = UIImage(data: employees[indexPath.row].portrait as Data)
+        cell.portraitImageView?.image = employees[indexPath.row].portrait
         cell.nameLabel?.text = employees[indexPath.row].name
         
         var stars = ""
         
-        while stars.characters.count < Int(employees[indexPath.row].rating) {
+        while stars.characters.count < Int(employees[indexPath.row].rating ?? 0) {
             stars += "★"
         }
         
@@ -115,10 +117,14 @@ extension EditEmployeeTableViewController{
         })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "删除", handler: {(action,indexPath) -> Void in
+            /*
             let realm = try! Realm()
             try! realm.write {
                 realm.delete(self.employees[indexPath.row])
             }
+ */
+            EmployeeTable.instance.deleteAnEmployee(byId: self.employees[indexPath.row].id)
+            self.employees.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             
         })
@@ -159,7 +165,9 @@ extension EditEmployeeTableViewController{
         //let addEmployeeController = segue.source as! AddEmployeeTableViewController
         //let e = addEmployeeController.employee
         //print(e)
-        employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
+        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
+        employees = EmployeeTable.instance.getEmployees()
+
         tableView!.reloadData()
     }
 }

@@ -7,23 +7,21 @@
 //
 
 import UIKit
-import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
 class EmployeeCollectionViewController: UICollectionViewController {
     
-    var employees:Results<EmployeeModel>!
-    //var selectedEmployee:EmployeeModel!
-    //var employees =  try! Realm().objects(EmployeeModel.self)
+    var employees:[Employee]!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = true
-        employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
+        self.clearsSelectionOnViewWillAppear = true
+        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
-        
+        employees = EmployeeTable.instance.getEmployees()
+        //print(employees)
         // 设置item之间和line之间的间距
         let spacing = CGFloat(20)
         layout.minimumInteritemSpacing = spacing
@@ -64,7 +62,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmployeeCollectionViewCell
         cell.nameLabel.text = employees[indexPath.row].name
-        cell.portraitImageView.image = UIImage(data: employees[indexPath.row].portrait as Data)
+        cell.portraitImageView.image = employees[indexPath.row].portrait
         
         return cell
     }
@@ -116,7 +114,6 @@ extension EmployeeCollectionViewController{
             let cell = sender as! EmployeeCollectionViewCell
             let indexPath = self.collectionView?.indexPath(for: cell)
             destinationController.employee = employees[(indexPath?.row)!]
-
         }
      }
     @IBAction func unwindToCancel(segue:UIStoryboardSegue){
