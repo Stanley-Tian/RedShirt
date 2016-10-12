@@ -138,6 +138,9 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
         
     }
     func updateAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndLargeImage image:UIImage?, AndBrief brief:String?){
+        if EmployeeTable.instance.updateAnEmployee(byId: employee.id, newName: name!, newBrief: brief!, newPortrait: portrait!, newImage: image!) {
+            print("修改一名员工成功!")
+        }
         /*
         let realm = try! Realm()
         try! realm.write {

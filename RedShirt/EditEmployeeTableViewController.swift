@@ -123,7 +123,7 @@ extension EditEmployeeTableViewController{
                 realm.delete(self.employees[indexPath.row])
             }
  */
-            EmployeeTable.instance.deleteAnEmployee(byId: self.employees[indexPath.row].id)
+            _ = EmployeeTable.instance.deleteAnEmployee(byId: self.employees[indexPath.row].id)
             self.employees.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             

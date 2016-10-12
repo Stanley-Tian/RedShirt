@@ -64,7 +64,12 @@ class EmployeeTable: MainDatabase {
                 table.column(id, primaryKey: true)
                 table.column(name)
                 table.column(brief)
+                table.column(portrait)
+                table.column(image)
+                table.column(createdAt)
+                table.column(rating)
             })
+            print("创建table成功")
         } catch {
             print("创建table失败")
         }
@@ -120,16 +125,39 @@ class EmployeeTable: MainDatabase {
         return employees
     }
     // MARK:UPDATE
+    func updateAnEmployee(byId employeeId:String, newName:String, newBrief:String, newPortrait:UIImage, newImage:UIImage) -> Bool{
+        let employeeToUpdate = tableEmployee.filter(id == employeeId)
+
+        do {
+            let update = employeeToUpdate.update([
+                name <- newName,
+                brief <- newBrief,
+                portrait <- newPortrait,
+                image <- newImage,
+                ])
+            if try db!.run(update) > 0 {
+                return true
+            }else{
+                return false
+            }
+            
+        } catch {
+            print("更新员工数据失败")
+            return false
+        }
+    }
     // MARK:DELETE
     func deleteAnEmployee(byId employeeId:String) -> Bool {
         do {
             let employeeToDelete = tableEmployee.filter(id == employeeId)
-            try db!.run(employeeToDelete.delete())
-            return true
+            if try db!.run(employeeToDelete.delete()) > 0 {
+                return true
+            } else {
+                return false
+            }
         } catch {
             print("删除员工失败！")
             return false
         }
-        return true
     }
 }

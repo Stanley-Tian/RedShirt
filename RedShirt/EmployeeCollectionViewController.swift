@@ -18,10 +18,9 @@ class EmployeeCollectionViewController: UICollectionViewController {
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = true
-        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         employees = EmployeeTable.instance.getEmployees()
-        //print(employees)
+
         // 设置item之间和line之间的间距
         let spacing = CGFloat(20)
         layout.minimumInteritemSpacing = spacing
@@ -40,6 +39,7 @@ class EmployeeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        employees = EmployeeTable.instance.getEmployees()
         collectionView?.reloadData()
         
     }
