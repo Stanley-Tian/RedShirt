@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import RealmSwift
 import SQLite
 
 class AddEmployeeTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -111,28 +110,7 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
     // try to save with realm
     
     func addAnEmployee(WithName name:String?, AndPortrait portrait:UIImage?, AndLargeImage image:UIImage?, AndBrief brief:String?){
-        /*
-        let realm = try! Realm()
-        try! realm.write {
-            let newEmployee = EmployeeModel()
-            
-            let smallPortrait = Tools.resizeImage(image: portrait!, newWidth: CGFloat(128))
-            let smallLargeImage = Tools.resizeImage(image: image!, newWidth: CGFloat(512))
-            
-            newEmployee.name = name!
-            newEmployee.brief = brief!
-            newEmployee.rating = 5
-            newEmployee.image = UIImagePNGRepresentation(smallLargeImage!)! as NSData
-            newEmployee.portrait = UIImagePNGRepresentation(smallPortrait!)! as NSData
-            newEmployee.id = UUID().uuidString
-            newEmployee.createdAt = NSDate()
-            realm.add(newEmployee)
-            self.employee = newEmployee
-        }
- */
- 
-        //sqlite version
-        if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!, portrait: portrait!, image: image!) != nil{
+         if EmployeeTable.instance.addAnEmployee(name: name!, brief: brief!, portrait: portrait!, image: image!) != nil{
             print("增加一名新员工成功！")
         }
         
@@ -141,37 +119,10 @@ class AddEmployeeTableViewController: UITableViewController, UIImagePickerContro
         if EmployeeTable.instance.updateAnEmployee(byId: employee.id, newName: name!, newBrief: brief!, newPortrait: portrait!, newImage: image!) {
             print("修改一名员工成功!")
         }
-        /*
-        let realm = try! Realm()
-        try! realm.write {
-            let updatedEmployee = EmployeeModel()
-            
-            let smallPortrait = Tools.resizeImage(image: portrait!, newWidth: CGFloat(128))
-            let smallLargeImage = Tools.resizeImage(image: image!, newWidth: CGFloat(512))
-            
-            updatedEmployee.name = name!
-            updatedEmployee.brief = brief!
-            updatedEmployee.image = UIImagePNGRepresentation(smallLargeImage!)! as NSData
-            updatedEmployee.portrait = UIImagePNGRepresentation(smallPortrait!)! as NSData
-            updatedEmployee.createdAt = NSDate()
-            updatedEmployee.id = employee.id // which one to update
-            // full update
-            //realm.add(updatedEmployee, update: true)
-            realm.create(EmployeeModel.self, value: [
-                "id": updatedEmployee.id,
-                "name": updatedEmployee.name,
-                "brief": updatedEmployee.brief,
-                "image": updatedEmployee.image,
-                "portrait": updatedEmployee.portrait,
-                ], update: true)
-            //self.employee = updatedEmployee
-        }
- */
+
     }
 
     func performValidation() -> Bool{
-        //let a = nameTextField.text
-        //_ = a
         if nameTextField.text! == "" {
             return false
         }else{

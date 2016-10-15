@@ -1,32 +1,23 @@
 PODS:
-  - Realm (2.0.2):
-    - Realm/Headers (= 2.0.2)
-  - Realm/Headers (2.0.2)
-  - RealmSwift (2.0.2):
-    - Realm (= 2.0.2)
   - SQLite.swift (0.10.1):
     - SQLite.swift/standard (= 0.10.1)
   - SQLite.swift/standard (0.10.1)
 
 DEPENDENCIES:
-  - RealmSwift
-  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`, branch `swift3-mariotaku`)
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
 
 EXTERNAL SOURCES:
   SQLite.swift:
-    :branch: swift3-mariotaku
     :git: https://github.com/stephencelis/SQLite.swift.git
 
 CHECKOUT OPTIONS:
   SQLite.swift:
-    :commit: 5bc521eb8abd7f125a0fab8338f61064e19811d7
+    :commit: 38d9b8508f77b51f7fe0bed9f360248bd32f4baf
     :git: https://github.com/stephencelis/SQLite.swift.git
 
 SPEC CHECKSUMS:
-  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
-  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
   SQLite.swift: c54b2cb32c2ec77cd52bc7442d05dd51b0623861
 
-PODFILE CHECKSUM: ea9bf51133cd430f071393c149b4e3c849cefa76
+PODFILE CHECKSUM: 32ba6c7a5999fa735b048eeaa26cc35efc048dba
 
 COCOAPODS: 1.0.1

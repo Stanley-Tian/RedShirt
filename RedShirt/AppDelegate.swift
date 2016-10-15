@@ -16,37 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //var db:Connection!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-         //EmployeeTable.instance.createTable()
-        
-        
-        /*
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        print(path)
-        db = try! Connection("\(path)/mainDatabase.sqlite3")
-        db.busyTimeout = 5
-        
-        db.busyHandler({ tries in
-            if tries >= 3 {
-                return false
-            }
-            return true
-        })
-        let tableEmployee = Table("employee")
-        
-        let id = Expression<String>("id")
-        let name = Expression<String>("name")
-        let brief = Expression<String>("brief")
-        
-        try! db.run(tableEmployee.create(ifNotExists: true){ t in
-            t.column(id, primaryKey: true)
-            t.column(name)
-            t.column(brief)
-        })
-        
-        let testInsert = tableEmployee.insert(id <- UUID().uuidString,name <- "Jimi",brief <- "good")
-        _ = try! db.run(testInsert)
- */
-                //print("Migrated objects in the default Realm: \(try! Realm().objects(EmployeeModel.self))")
         return true
     }
     

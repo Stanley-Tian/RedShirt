@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import RealmSwift
+//import RealmSwift
 import SQLite
 
 //v0
+/*
 class EmployeeModel:Object{
     dynamic var name:       String  = ""
     dynamic var brief:      String  = ""
@@ -24,6 +25,7 @@ class EmployeeModel:Object{
         return "id"
     }
 }
+ */
 class Employee{
     let id: String
     var name: String

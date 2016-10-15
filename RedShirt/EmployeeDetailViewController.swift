@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 class EmployeeDetailViewController: UIViewController {
 
@@ -26,7 +26,7 @@ class EmployeeDetailViewController: UIViewController {
     @IBOutlet weak var star4Button: UIButton!
     @IBOutlet weak var star5Button: UIButton!
     var employee: Employee?
-    var evaluation: EvaluationModel?
+    var evaluation: Evaluation?
     //var sourceSegue = ""
 
     
@@ -48,6 +48,7 @@ class EmployeeDetailViewController: UIViewController {
         
         briefLabel.text = employee?.brief
         
+        evaluation = Evaluation(withStars: 0, andReward: 0, andEmployeeId: "")
         //evaluation = EvaluationModel(stars: 0, reward: 0, employee: employee!)
     }
     func clearStarButtons(){
@@ -110,9 +111,7 @@ extension EmployeeDetailViewController{
         }
         if identifier == "saveUnwindSegue"{
             if validtaion(){
-                evaluation?.save()
-                let testDict = evaluation?.toDictionary()
-                    print(testDict)
+                EvaluationTable.instance.addAnEvaluation(evaluation: evaluation!)
                 return true
             }else{
                 let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
@@ -131,7 +130,7 @@ extension EmployeeDetailViewController{
 
     }
 }
-
+/*
 extension Object {
     func toDictionary() -> NSDictionary {
         // 获取当前object各个属性的名称
@@ -160,3 +159,4 @@ extension Object {
     }
     
 }
+ */

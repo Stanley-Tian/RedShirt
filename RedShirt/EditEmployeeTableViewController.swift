@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 class EditEmployeeTableViewController: UITableViewController {
     
-    //var employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
     var employees:[Employee]!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +19,6 @@ class EditEmployeeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: true)
         employees = EmployeeTable.instance.getEmployees()
     }
     
@@ -117,12 +114,6 @@ extension EditEmployeeTableViewController{
         })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "删除", handler: {(action,indexPath) -> Void in
-            /*
-            let realm = try! Realm()
-            try! realm.write {
-                realm.delete(self.employees[indexPath.row])
-            }
- */
             _ = EmployeeTable.instance.deleteAnEmployee(byId: self.employees[indexPath.row].id)
             self.employees.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -165,7 +156,6 @@ extension EditEmployeeTableViewController{
         //let addEmployeeController = segue.source as! AddEmployeeTableViewController
         //let e = addEmployeeController.employee
         //print(e)
-        //employees = try! Realm().objects(EmployeeModel.self).sorted(byProperty: "name", ascending: false)
         employees = EmployeeTable.instance.getEmployees()
 
         tableView!.reloadData()
