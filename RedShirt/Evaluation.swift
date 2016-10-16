@@ -9,44 +9,15 @@
 import Foundation
 //import RealmSwift
 import SQLite
-//v0
-/*
-class EvaluationModel:Object{
-    dynamic var stars:      Int     = 0
-    dynamic var reward:     Int     = 0
-    dynamic var employee:      EmployeeModel?
-    dynamic var id:         String  = ""
-    dynamic var createdAt:  NSDate?
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(stars:Int, reward:Int, employee:EmployeeModel)
-    {
-        self.init()
-        self.stars = stars
-        self.reward = reward
-        self.employee = employee
-        self.id = UUID().uuidString
-        self.createdAt = NSDate()
-    }
-    func save(){
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(self)
-        }
-    }
-}
-*/
+
 class Evaluation{
     var id:String
     var stars:Int
-    var reward:Int
+    var reward:Double
     var employeeId:String
     var createdAt:Date
     
-    init(withStars stars:Int, andReward reward:Int, andEmployeeId employeeId:String) {
+    init(withStars stars:Int, andReward reward:Double, andEmployeeId employeeId:String) {
         self.id = UUID().uuidString
         self.stars = stars
         self.reward = reward
@@ -63,7 +34,7 @@ class EvaluationTable:MainDatabase{
     // columns
     private var id = Expression<String>("id")
     private let stars = Expression<Int>("stars")
-    private let reward = Expression<Int>("reward")
+    private let reward = Expression<Double>("reward")
     private let employeeId = Expression<String>("employeeId")
     private let createdAt = Expression<NSDate>("createdAt")
     
@@ -93,7 +64,7 @@ class EvaluationTable:MainDatabase{
         }
     }
     
-    public func addAnEvaluaiton(employeeId:String, stars:Int, reward:Int) -> Int64?{
+    public func addAnEvaluaiton(employeeId:String, stars:Int, reward:Double) -> Int64?{
         do {
             let insert = tableEvaluation.insert(
                 self.id <- UUID().uuidString,

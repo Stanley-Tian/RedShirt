@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +13,7 @@
             <objects>
                 <collectionViewController id="YQf-Wl-4Iq" userLabel="主页" customClass="EmployeeCollectionViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzG-R8-qI9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="oHf-1a-pwU">
@@ -85,16 +84,16 @@
                         <viewControllerLayoutGuide type="bottom" id="sLu-4s-Txa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GCQ-yb-S0r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Gw-Rz7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="PNm-AJ-813">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PNm-AJ-813" secondAttribute="height" multiplier="182:75" id="yEz-sF-tcs"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" tag="5" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Gw-Rz7">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="PNm-AJ-813">
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="PNm-AJ-813" secondAttribute="height" multiplier="16:9" id="w2r-gE-UCE"/>
-                                        </constraints>
-                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hin-CX-nPW">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-vm-WcH">
@@ -120,60 +119,104 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-tk-j8N" userLabel="评价">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请评价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-my-job">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Yh7-yO-oRq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="82X-U5-3sw" userLabel="stars">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请评价服务星级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-my-job">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="82X-U5-3sw" userLabel="stars">
-                                                <subviews>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5c-eI-i1D">
-                                                        <state key="normal" title="☆"/>
-                                                        <connections>
-                                                            <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="sSZ-3b-tfr"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGz-0X-5gv">
-                                                        <state key="normal" title="☆"/>
-                                                        <connections>
-                                                            <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="kTx-42-FVl"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiP-bV-gyT">
-                                                        <state key="normal" title="☆"/>
-                                                        <connections>
-                                                            <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="zgf-cg-wYh"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7K-xe-2q6">
-                                                        <state key="normal" title="☆"/>
-                                                        <connections>
-                                                            <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="LxS-2a-cBB"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="927-Ms-FFt">
-                                                        <state key="normal" title="☆"/>
-                                                        <connections>
-                                                            <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="abS-J2-5nG"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mH-0Z-vEa">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="非常好">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="3Xg-fz-rFr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-nE-bYM">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="很好">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="43J-r4-hwe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kI5-ia-RJW">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="还行">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="starButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="oj2-zP-BMp"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="xLo-XG-Y8w"/>
+                                            <constraint firstAttribute="height" constant="50" id="KCd-Wa-BVR"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhH-1p-Yrp" userLabel="赞赏">
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="打赏（自愿）非自愿请举报" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaW-ie-dP7" userLabel="打赏">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="aY3-Nr-bjC"/>
+                                            <constraint firstAttribute="height" constant="21" id="NZZ-i3-mZ2"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                        <state key="normal" title="赞赏（自愿）"/>
-                                    </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="to0-z1-DhW" userLabel="reward">
+                                        <subviews>
+                                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBv-ZU-h6S">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="2元">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rewardButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="hfn-Qu-0fC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXZ-Cu-e3Q">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="5元">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rewardButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="UAL-9s-hzK"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="113" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci9-yM-gtf">
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="10元">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rewardButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="m4y-nD-6Le"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="自定义" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iB6-gb-Jdg">
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="rewardUserDefineTextFieldEditEnd:" destination="sVu-68-Z3v" eventType="editingDidEnd" id="XL1-l4-9A3"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="57s-dX-feH"/>
+                                        </constraints>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的赞赏将计入账单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQl-Pf-Ygy">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="OOR-fo-dq3"/>
@@ -190,36 +233,52 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="v8w-yf-cvO">
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近30天赏金：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgl-xD-kYL">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh7-lo-jyn">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="Lgl-xD-kYL" firstAttribute="width" secondItem="qh7-lo-jyn" secondAttribute="width" multiplier="0.5" id="SDw-g9-jw4"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCi-ML-zMR">
-                                <frame key="frameInset" minX="686" minY="20" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGn-vY-7bs">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近30天赏金：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Max-Ed-6kR">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="赏金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzZ-F8-Z41">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="6WN-bY-B68"/>
+                                    <constraint firstAttribute="height" constant="21" id="FYB-8k-HIX"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-sj-4tQ">
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="ORY-aX-hVI"/>
+                                    <constraint firstAttribute="width" constant="137" id="PTg-NX-94l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <state key="normal" title="提交">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonClick:" destination="sVu-68-Z3v" eventType="touchUpInside" id="JRX-kF-k9J"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hWK-Gw-Rz7" firstAttribute="top" secondItem="LCw-53-Gtw" secondAttribute="bottom" constant="8" symbolic="YES" id="MLi-4b-6eF"/>
-                            <constraint firstItem="sLu-4s-Txa" firstAttribute="top" secondItem="hWK-Gw-Rz7" secondAttribute="bottom" constant="8" symbolic="YES" id="U35-El-Ys3"/>
+                            <constraint firstItem="PNm-AJ-813" firstAttribute="top" secondItem="LCw-53-Gtw" secondAttribute="bottom" constant="8" symbolic="YES" id="JFM-85-yGL"/>
+                            <constraint firstItem="iJf-sj-4tQ" firstAttribute="centerX" secondItem="GCQ-yb-S0r" secondAttribute="centerX" id="LGU-gA-Fln"/>
+                            <constraint firstItem="hWK-Gw-Rz7" firstAttribute="top" secondItem="PNm-AJ-813" secondAttribute="bottom" constant="8" symbolic="YES" id="OMq-VH-BLU"/>
+                            <constraint firstItem="hGn-vY-7bs" firstAttribute="top" secondItem="LCw-53-Gtw" secondAttribute="bottom" constant="33" id="QA0-st-wuI"/>
+                            <constraint firstItem="PNm-AJ-813" firstAttribute="trailing" secondItem="GCQ-yb-S0r" secondAttribute="trailingMargin" id="QNh-cW-Txf"/>
+                            <constraint firstItem="PNm-AJ-813" firstAttribute="leading" secondItem="GCQ-yb-S0r" secondAttribute="leadingMargin" id="SHu-P9-9BN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hGn-vY-7bs" secondAttribute="trailing" constant="44" id="b2z-Xn-nkr"/>
                             <constraint firstItem="hWK-Gw-Rz7" firstAttribute="leading" secondItem="GCQ-yb-S0r" secondAttribute="leadingMargin" id="enO-nU-TPh"/>
+                            <constraint firstItem="iJf-sj-4tQ" firstAttribute="top" secondItem="hWK-Gw-Rz7" secondAttribute="bottom" constant="34" id="ioX-Ru-spF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWK-Gw-Rz7" secondAttribute="trailing" id="kdk-Em-pfI"/>
                         </constraints>
                     </view>
@@ -230,48 +289,45 @@
                                 <segue destination="eB5-bc-uDy" kind="unwind" identifier="cancelUnwindSegue" unwindAction="unwindToCancelWithSegue:" id="ihD-sK-eVd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" tag="11" title="保存" style="plain" id="KpQ-k6-c7d">
-                            <connections>
-                                <segue destination="eB5-bc-uDy" kind="unwind" identifier="saveUnwindSegue" unwindAction="unwindToSaveWithSegue:" id="T8T-4L-gFk"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="briefLabel" destination="nps-BP-idp" id="imC-jR-VAe"/>
+                        <outlet property="commentGoodButton" destination="a2B-nE-bYM" id="kFI-57-dao"/>
+                        <outlet property="commentGreatButton" destination="9mH-0Z-vEa" id="T25-du-a8o"/>
+                        <outlet property="commentNotTooBadButton" destination="kI5-ia-RJW" id="59T-Vz-qpa"/>
                         <outlet property="employeeImageView" destination="PNm-AJ-813" id="zaK-u4-yYn"/>
-                        <outlet property="latest30DaysRewardLabel" destination="qh7-lo-jyn" id="HgY-yT-pV1"/>
+                        <outlet property="latest30DaysRewardLabel" destination="EzZ-F8-Z41" id="88z-IM-qWB"/>
                         <outlet property="nameLabel" destination="9FN-vm-WcH" id="oJg-hJ-bgz"/>
                         <outlet property="ratingLabel" destination="xIg-Hg-4xo" id="op8-s3-Rkv"/>
-                        <outlet property="star1Button" destination="p5c-eI-i1D" id="OeN-pF-KBf"/>
-                        <outlet property="star2Button" destination="SGz-0X-5gv" id="A9h-A2-8Z4"/>
-                        <outlet property="star3Button" destination="BiP-bV-gyT" id="1ne-dQ-Xdb"/>
-                        <outlet property="star4Button" destination="M7K-xe-2q6" id="hfc-no-4LU"/>
-                        <outlet property="star5Button" destination="927-Ms-FFt" id="Qfs-fi-Vib"/>
+                        <outlet property="rewardLevel1Button" destination="tBv-ZU-h6S" id="Ekj-FC-VDn"/>
+                        <outlet property="rewardLevel2Button" destination="jXZ-Cu-e3Q" id="LKP-3o-nQf"/>
+                        <outlet property="rewardLevel3Button" destination="Ci9-yM-gtf" id="44n-G5-EFC"/>
+                        <outlet property="rewardUserDefineTextField" destination="iB6-gb-Jdg" id="rho-v0-VaV"/>
                         <outlet property="starsStackView" destination="82X-U5-3sw" id="LOj-wt-5Cw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z92-XO-fZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eB5-bc-uDy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="909" y="886"/>
+            <point key="canvasLocation" x="908.59375" y="885.93749999999989"/>
         </scene>
         <!--设置-->
         <scene sceneID="E2x-Dl-FBX">
             <objects>
                 <tableViewController id="sLr-8i-sKw" customClass="SettingTableViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BlP-x0-VKq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="E0N-i1-XD2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="myM-x7-Ik8">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="myM-x7-Ik8" id="7c0-Zu-zfp">
-                                            <frame key="frameInset" width="342" height="44"/>
+                                            <frame key="frameInset" width="702" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-Yu-bvx">
@@ -317,15 +373,15 @@
             <objects>
                 <tableViewController id="Px3-PM-YWl" userLabel="员工管理" customClass="EditEmployeeTableViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="oIJ-52-vQN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Vlr-dg-WsX" customClass="EditEmployeeTableViewCell" customModule="RedShirt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="92" width="768" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vlr-dg-WsX" id="XBj-W5-KrL">
-                                    <frame key="frameInset" width="375" height="80"/>
+                                    <frame key="frameInset" width="768" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9xG-Ly-MQK" userLabel="头像">
@@ -390,17 +446,17 @@
             <objects>
                 <tableViewController id="say-2C-k7D" customClass="AddEmployeeTableViewController" customModule="RedShirt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XHN-ce-etc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="Pt8-pe-2i9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="31g-Jp-WaD">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="64" width="768" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31g-Jp-WaD" id="hAz-7I-Sh1">
-                                            <frame key="frameInset" width="375" height="200"/>
+                                            <frame key="frameInset" width="768" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nC3-Om-whZ">
@@ -423,10 +479,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="ZpQ-r4-7Uz">
-                                        <rect key="frame" x="0.0" y="264" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="264" width="768" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZpQ-r4-7Uz" id="tUD-72-Nuj">
-                                            <frame key="frameInset" width="375" height="200"/>
+                                            <frame key="frameInset" width="768" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BhX-sB-pUz">
@@ -449,10 +505,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="7Oh-Mn-tWT">
-                                        <rect key="frame" x="0.0" y="464" width="375" height="97"/>
+                                        <rect key="frame" x="0.0" y="464" width="768" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Oh-Mn-tWT" id="Zk1-nJ-tCQ">
-                                            <frame key="frameInset" width="375" height="97"/>
+                                            <frame key="frameInset" width="768" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ju8-yr-kkL">
@@ -479,10 +535,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="255" id="uBD-gR-gfz">
-                                        <rect key="frame" x="0.0" y="561" width="375" height="255"/>
+                                        <rect key="frame" x="0.0" y="561" width="768" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBD-gR-gfz" id="Mzb-vf-Bn7">
-                                            <frame key="frameInset" width="375" height="255"/>
+                                            <frame key="frameInset" width="768" height="254"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="y0p-W8-k5E">

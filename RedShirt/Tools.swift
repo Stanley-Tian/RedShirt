@@ -68,7 +68,32 @@ class Tools{
     class func getApp() -> AppDelegate{
         return UIApplication.shared.delegate as! AppDelegate
     }
+    
+    class func changeColorByPercent(alpha:Double, red:Double = 1, green:Double = 1, blue:Double = 1) {
+        
+    }
+
 }
+extension UIColor {
+    func changeColorByPercent(alpha:Double, red:Double = 1, green:Double = 1, blue:Double = 1)  -> UIColor{
+        //let originBackgroundColor = commentGreatButton.backgroundColor
+        
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        //CGFloat; red,green,blue,alpha
+        if (self.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+            return UIColor(red: r, green: g, blue: b, alpha: a*0.5)
+    }else{
+    return self
+    }
+    
+
+    }
+
+}
+
 // MARK: - Extensions for SQLite
 extension NSDate: Value {
     public class var declaredDatatype: String {

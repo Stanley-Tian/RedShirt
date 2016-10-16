@@ -10,7 +10,7 @@ import UIKit
 //import RealmSwift
 
 class EmployeeDetailViewController: UIViewController {
-
+    
     
     @IBOutlet weak var employeeImageView: UIImageView!
     
@@ -20,22 +20,106 @@ class EmployeeDetailViewController: UIViewController {
     @IBOutlet weak var starsStackView: UIStackView!
     @IBOutlet weak var latest30DaysRewardLabel: UILabel!
     
-    @IBOutlet weak var star1Button: UIButton!
-    @IBOutlet weak var star2Button: UIButton!
-    @IBOutlet weak var star3Button: UIButton!
-    @IBOutlet weak var star4Button: UIButton!
-    @IBOutlet weak var star5Button: UIButton!
+    @IBOutlet weak var commentGreatButton: UIButton!
+    @IBOutlet weak var commentGoodButton: UIButton!
+    @IBOutlet weak var commentNotTooBadButton: UIButton!
+    
+    @IBOutlet weak var rewardLevel1Button: UIButton!
+    @IBOutlet weak var rewardLevel2Button: UIButton!
+    @IBOutlet weak var rewardLevel3Button: UIButton!
+    
+    @IBOutlet weak var rewardUserDefineTextField: UITextField!
+    
     var employee: Employee?
     var evaluation: Evaluation?
+    var comment:String = ""
     //var sourceSegue = ""
-
-    
     @IBAction func starButtonClick(_ sender: UIButton) {
-
+        
         let starsCount = sender.tag
-        paintStarButtons(starsCount)
         evaluation?.stars = starsCount
+        resetCommentButtonColor(color: .green)
+        switch sender.tag {
+        case 5:
+            commentGreatButton.backgroundColor = .blue
+            comment = (commentGreatButton.titleLabel?.text!)!
+        case 3:
+            commentGoodButton.backgroundColor = .blue
+            comment = (commentGoodButton.titleLabel?.text!)!
+        case 1:
+            commentNotTooBadButton.backgroundColor = .blue
+            comment = (commentNotTooBadButton.titleLabel?.text!)!
+        default:
+            break
+        }
     }
+    func resetRewardButtonColor(color:UIColor){
+        rewardLevel1Button.backgroundColor = color
+        rewardLevel2Button.backgroundColor = color
+        rewardLevel3Button.backgroundColor = color
+    }
+    func resetCommentButtonColor(color:UIColor){
+        commentGreatButton.backgroundColor = color
+        commentGoodButton.backgroundColor = color
+        commentNotTooBadButton.backgroundColor = color
+    }
+    @IBAction func rewardButtonClick(_ sender: UIButton) {
+        resetRewardButtonColor(color: .green)
+        
+        let rewardTag = sender.tag
+        switch rewardTag {
+        case 111:
+            evaluation?.reward = 2
+            rewardLevel1Button.backgroundColor = .blue
+        case 112:
+            evaluation?.reward = 5
+            rewardLevel2Button.backgroundColor = .blue
+        case 113:
+            evaluation?.reward = 10
+            rewardLevel3Button.backgroundColor = .blue
+        default:
+            break
+        }
+    }
+    @IBAction func rewardUserDefineTextFieldEditEnd(_ sender: UITextField) {
+        resetRewardButtonColor(color: .green)
+        
+        print(rewardUserDefineTextField.text)
+        if rewardUserDefineTextField.text != nil {
+            evaluation!.reward = Double(rewardUserDefineTextField.text!) ?? 0
+        } else {
+            //evaluation
+        }
+        print("自定义打赏：",evaluation!.reward)
+    }
+    
+    @IBAction func submitButtonClick(_ sender: UIButton) {
+        
+        if validtaion() {
+            
+            let alertController = UIAlertController(title: nil, message: "感谢您参与评价！\n您的评价为：\(comment)\n您的赏金为：\(evaluation!.reward)", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "确认", style: .default, handler: { alert in
+                EvaluationTable.instance.addAnEvaluation(evaluation: self.evaluation!)
+
+                self.performSegue(withIdentifier: "saveUnwindSegue", sender: nil)
+            })
+            let modifyAction = UIAlertAction(title: "返回修改", style: .default, handler: {alert in alertController.dismiss(animated: true, completion: nil)})
+            alertController.addAction(modifyAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion:nil)
+        } else {
+            let alertController = UIAlertController(title: nil , message: "请评价！", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "好的", style: .cancel, handler: {
+                alert in alertController.dismiss(animated: true, completion: nil)//dismiss
+            })
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,34 +133,9 @@ class EmployeeDetailViewController: UIViewController {
         briefLabel.text = employee?.brief
         
         evaluation = Evaluation(withStars: 0, andReward: 0, andEmployeeId: "")
-        //evaluation = EvaluationModel(stars: 0, reward: 0, employee: employee!)
-    }
-    func clearStarButtons(){
-        star1Button.setTitle("☆", for: .normal)
-        star2Button.setTitle("☆", for: .normal)
-        star3Button.setTitle("☆", for: .normal)
-        star4Button.setTitle("☆", for: .normal)
-        star5Button.setTitle("☆", for: .normal)
-    }
-    func paintStarButtons(_ starsCount:Int){
-        clearStarButtons()
-        if starsCount >= 1 {
-            star1Button.setTitle("★", for: .normal)
-        }
-        if starsCount >= 2 {
-            star2Button.setTitle("★", for: .normal)
-        }
-        if starsCount >= 3 {
-            star3Button.setTitle("★", for: .normal)
-        }
-        if starsCount >= 4 {
-            star4Button.setTitle("★", for: .normal)
-        }
-        if starsCount >= 5 {
-            star5Button.setTitle("★", for: .normal)
-        }
         
     }
+    
     func validtaion() -> Bool
     {
         if evaluation?.stars == 0 {
@@ -85,21 +144,18 @@ class EmployeeDetailViewController: UIViewController {
         
         return true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    private func sendToServer(){
-        
-    }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-
- 
-
+    
+    
+    
 }
 // MARK: - Navigation
 extension EmployeeDetailViewController{
@@ -109,54 +165,22 @@ extension EmployeeDetailViewController{
         if identifier == "cancelUnwindSegue" {
             return true
         }
-        if identifier == "saveUnwindSegue"{
-            if validtaion(){
-                EvaluationTable.instance.addAnEvaluation(evaluation: evaluation!)
-                return true
-            }else{
-                let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alertController.addAction(alertAction)
-                present(alertController, animated: true, completion: nil)
-                return false
-            }
-        }
-        
+//        if identifier == "saveUnwindSegue"{
+//            if validtaion(){
+//                EvaluationTable.instance.addAnEvaluation(evaluation: evaluation!)
+//                return true
+//            }else{
+//                let alertController = UIAlertController(title: "", message: "请评价星级", preferredStyle: .alert)
+//                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alertController.addAction(alertAction)
+//                present(alertController, animated: true, completion: nil)
+//                return false
+//            }
+//        }
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-
     }
 }
-/*
-extension Object {
-    func toDictionary() -> NSDictionary {
-        // 获取当前object各个属性的名称
-        let properties = self.objectSchema.properties.map { $0.name }
-        // 通过这些名称来建立一个字典
-        let dictionary = self.dictionaryWithValues(forKeys: properties)
-        // 建立一个可变字典
-        let mutabledic = NSMutableDictionary()
-        mutabledic.setValuesForKeys(dictionary)
-        
-        for prop in self.objectSchema.properties as [Property]! {
-            // find lists
-            if let nestedObject = self[prop.name] as? Object {
-                mutabledic.setValue(nestedObject.toDictionary(), forKey: prop.name)
-            } else if let nestedListObject = self[prop.name] as? ListBase {
-                var objects = [AnyObject]()
-                for index in 0..<nestedListObject._rlmArray.count  {
-                    let object = nestedListObject._rlmArray[index] as AnyObject
-                    objects.append(object.toDictionary())
-                }
-                mutabledic.setObject(objects, forKey: prop.name as NSCopying)
-            }
-            
-        }
-        return mutabledic
-    }
-    
-}
- */
