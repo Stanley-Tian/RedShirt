@@ -92,7 +92,7 @@ class EmployeeDetailViewController: UIViewController {
         }
         print("自定义打赏：",evaluation!.reward)
     }
-    
+    // MARK:点击提交按钮
     @IBAction func submitButtonClick(_ sender: UIButton) {
         
         if validtaion() {
@@ -100,7 +100,7 @@ class EmployeeDetailViewController: UIViewController {
             let alertController = UIAlertController(title: nil, message: "感谢您参与评价！\n您的评价为：\(comment)\n您的赏金为：\(evaluation!.reward)", preferredStyle: .alert)
             
             let confirmAction = UIAlertAction(title: "确认", style: .default, handler: { alert in
-                EvaluationTable.instance.addAnEvaluation(evaluation: self.evaluation!)
+                _ = EvaluationTable.instance.addAnEvaluation(evaluation: self.evaluation!)
 
                 self.performSegue(withIdentifier: "saveUnwindSegue", sender: nil)
             })
@@ -132,7 +132,7 @@ class EmployeeDetailViewController: UIViewController {
         
         briefLabel.text = employee?.brief
         
-        evaluation = Evaluation(withStars: 0, andReward: 0, andEmployeeId: "")
+        evaluation = Evaluation(withStars: 0, andReward: 0, andEmployeeId: (employee?.id)!)
         
     }
     

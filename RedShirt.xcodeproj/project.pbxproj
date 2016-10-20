@@ -196,7 +196,7 @@
 				TargetAttributes = {
 					1B3815FA1DA0F94D004D706C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 7VNR396R9U;
+						DevelopmentTeam = 5TET7T7X2S;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -424,7 +424,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7VNR396R9U;
+				DEVELOPMENT_TEAM = 5TET7T7X2S;
 				INFOPLIST_FILE = RedShirt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -440,7 +440,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7VNR396R9U;
+				DEVELOPMENT_TEAM = 5TET7T7X2S;
 				INFOPLIST_FILE = RedShirt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

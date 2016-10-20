@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import RealmSwift
+import Alamofire
 import SQLite
 
 class Evaluation{
@@ -75,6 +75,9 @@ class EvaluationTable:MainDatabase{
             )
             let rowid = try db!.run(insert)
             
+
+            
+            
             return rowid
         } catch {
             print("增加新评价失败！")
@@ -92,6 +95,18 @@ class EvaluationTable:MainDatabase{
                 self.createdAt <- NSDate()
             )
             if try db!.run(insert) > 0 {
+                
+                Alamofire.request("https://httpbin.org/get").responseJSON { response in
+                    print(response.request)  // original URL request
+                    print(response.response) // HTTP URL response
+                    print(response.data)     // server data
+                    print(response.result)   // result of response serialization
+                    
+                    if let JSON = response.result.value {
+                        print("JSON: \(JSON)")
+                    }
+                }
+                
                 return true
             } else {
                 return false

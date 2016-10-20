@@ -9,7 +9,7 @@ target 'RedShirt' do
    #pod 'SQLite.swift', :git => 'https://github.com/stephencelis/SQLite.swift.git', :branch => 'swift3-mariotaku'
    pod 'SQLite.swift', :git => 'https://github.com/stephencelis/SQLite.swift.git'
    #pod 'RealmSwift'
-   #pod 'Alamofire'
+   pod 'Alamofire', '~> 4.0'
    #pod 'SwiftyJSON'
 end
 
