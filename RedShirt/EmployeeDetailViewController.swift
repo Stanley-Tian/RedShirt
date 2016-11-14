@@ -84,7 +84,7 @@ class EmployeeDetailViewController: UIViewController {
     @IBAction func rewardUserDefineTextFieldEditEnd(_ sender: UITextField) {
         resetRewardButtonColor(color: .green)
         
-        print(rewardUserDefineTextField.text)
+        print(rewardUserDefineTextField.text!)
         if rewardUserDefineTextField.text != nil {
             evaluation!.reward = Double(rewardUserDefineTextField.text!) ?? 0
         } else {
@@ -96,8 +96,11 @@ class EmployeeDetailViewController: UIViewController {
     @IBAction func submitButtonClick(_ sender: UIButton) {
         
         if validtaion() {
-            
-            let alertController = UIAlertController(title: nil, message: "感谢您参与评价！\n您的评价为：\(comment)\n您的赏金为：\(evaluation!.reward)", preferredStyle: .alert)
+            var alert_message = "感谢您参与评价！\n您的评价为：\(comment)"
+            if evaluation!.reward > 0 {
+                alert_message += "\n您的赏金为：\(evaluation!.reward)"
+            }
+            let alertController = UIAlertController(title: nil, message: alert_message, preferredStyle: .alert)
             
             let confirmAction = UIAlertAction(title: "确认", style: .default, handler: { alert in
                 _ = EvaluationTable.instance.addAnEvaluation(evaluation: self.evaluation!)

@@ -97,9 +97,9 @@ class EvaluationTable:MainDatabase{
             if try db!.run(insert) > 0 {
                 
                 Alamofire.request("https://httpbin.org/get").responseJSON { response in
-                    print(response.request)  // original URL request
-                    print(response.response) // HTTP URL response
-                    print(response.data)     // server data
+                    print(response.request!)  // original URL request
+                    print(response.response!) // HTTP URL response
+                    print(response.data!)     // server data
                     print(response.result)   // result of response serialization
                     
                     if let JSON = response.result.value {
